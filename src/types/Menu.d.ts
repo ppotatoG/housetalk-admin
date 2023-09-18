@@ -1,6 +1,16 @@
-interface Menu {
+interface BaseMenu {
   id: number;
   name: string;
-  path: string;
-  subMenu?: Menu[];
 }
+
+interface MenuWithSubMenu extends BaseMenu {
+  subMenu: Menu[];
+  path?: never;
+}
+
+interface MenuWithPath extends BaseMenu {
+  path: string;
+  subMenu?: never;
+}
+
+type Menu = MenuWithSubMenu | MenuWithPath;

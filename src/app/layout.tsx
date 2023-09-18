@@ -6,7 +6,7 @@ import React from 'react';
 
 const inter = Inter({ subsets: ['latin'] });
 
-import Head from './component/Head/';
+import Navigation from '@/app/component/Navigation';
 
 export default function RootLayout({
   children,
@@ -16,8 +16,10 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className={inter.className} suppressHydrationWarning={true}>
-        <Head />
-        {children}
+        <div className="flex h-screen">
+          <Navigation />
+          <div className="w-3/4 p-4">{children}</div>
+        </div>
       </body>
     </html>
   );
