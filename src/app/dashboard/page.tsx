@@ -1,7 +1,9 @@
+import Dashboard from '@/app/component/Dashboard';
+
 const Home = () => {
   return (
     <main>
-      <h1 className="text-3xl font-bold underline">Hello, Next.js!</h1>
+      <Dashboard />
     </main>
   );
 };

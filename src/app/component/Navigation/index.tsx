@@ -54,7 +54,7 @@ const NavigationItem: React.FC<Props> = ({ menu, level }: Props) => {
 
 const Navigation = () => {
   return (
-    <div className="fixed top-0 left-0 h-screen w-64 overflow-y-auto bg-[#282B4A]">
+    <div className="w-1/4 h-screen overflow-y-auto bg-[#282B4A]">
       {MENU.map(menu => (
         <NavigationItem key={menu.id} menu={menu} level={0} />
       ))}
