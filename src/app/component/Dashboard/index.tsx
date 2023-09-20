@@ -1,6 +1,15 @@
-import { FiRefreshCcw } from 'react-icons/fi';
+'use client';
 
-const DUMMY_SIGNUP_CONTENTS = [
+import { FiRefreshCcw } from 'react-icons/fi';
+import SignUpContents from '@/app/component/Dashboard/SignUpContents';
+
+interface DUMMY_SIGNUP_CONTENTS_TYPE {
+  date: string;
+  daily: number;
+  cumulative: number;
+}
+
+const DUMMY_SIGNUP_CONTENTS: DUMMY_SIGNUP_CONTENTS_TYPE[] = [
   { date: '2023-09-19', daily: 5, cumulative: 1200 },
   { date: '2023-09-18', daily: 7, cumulative: 1195 },
   { date: '2023-09-17', daily: 4, cumulative: 1188 },
@@ -70,6 +79,12 @@ const Dashboard = () => {
         <button>
           <FiRefreshCcw />
         </button>
+      </div>
+      <div className="flex gap-2">
+        <SignUpContents
+          data={DUMMY_SIGNUP_CONTENTS}
+          formattedDate="2023.09.19"
+        />
       </div>
     </>
   );
