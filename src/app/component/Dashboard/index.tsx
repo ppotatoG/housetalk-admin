@@ -1,7 +1,7 @@
 'use client';
 
 import { FiRefreshCcw } from 'react-icons/fi';
-import SignUpContents from '@/app/component/Dashboard/SignUpContents';
+import SignUpContents from '@/app/component/Dashboard/signUpContents';
 
 interface DUMMY_SIGNUP_CONTENTS_TYPE {
   date: string;
@@ -55,14 +55,14 @@ const DUMMY_HOUSE_REVIEW_POSTS = Array.from({ length: 20 }, (_, i) => ({
 const Dashboard = () => {
   const now = new Date();
 
-  const options: Intl.DateTimeFormatOptions = {
+  const formatOptions: Intl.DateTimeFormatOptions = {
     year: 'numeric',
     month: '2-digit',
     day: '2-digit',
     weekday: 'short',
   };
 
-  const formattedDate = new Date().toLocaleDateString('ko-KR', options);
+  const formattedDate = new Date().toLocaleDateString('ko-KR', formatOptions);
 
   const hours = now.getHours().toString().padStart(2, '0');
   const minutes = now.getMinutes().toString().padStart(2, '0');
@@ -80,11 +80,8 @@ const Dashboard = () => {
           <FiRefreshCcw />
         </button>
       </div>
-      <div className="flex gap-2">
-        <SignUpContents
-          data={DUMMY_SIGNUP_CONTENTS}
-          formattedDate="2023.09.19"
-        />
+      <div className="flex gap-2 mt-6">
+        <SignUpContents data={DUMMY_SIGNUP_CONTENTS} today="2023.09.19" />
       </div>
     </>
   );
