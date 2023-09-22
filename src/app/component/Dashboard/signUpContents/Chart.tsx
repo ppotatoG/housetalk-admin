@@ -18,7 +18,7 @@ const Chart: React.FC<ChartProps> = ({ chartData, options }) => {
           afterDraw: chart => {
             const ctx = chart.ctx;
             if (!ctx) return;
-            ctx.font = '14px Arial';
+            ctx.font = '12px';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'bottom';
 

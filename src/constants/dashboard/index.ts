@@ -1,0 +1,4 @@
+import { CHART_COLORS } from './CHART_COLORS';
+import { BAR_CHART_OPTIONS } from './BAR_CHART_OPTIONS';
+
+export { CHART_COLORS, BAR_CHART_OPTIONS };

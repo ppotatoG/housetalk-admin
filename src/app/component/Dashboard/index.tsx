@@ -74,7 +74,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="flex items-center gap-2 text-[#066ADF]">
+      <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400">
         <p>{formattedTime}</p>
         <button>
           <FiRefreshCcw />

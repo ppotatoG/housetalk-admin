@@ -1,12 +1,12 @@
 import React from 'react';
 import Chart from './Chart';
+import { CHART_COLORS, BAR_CHART_OPTIONS } from '@/constants/dashboard';
 
 import {
   BarElement,
   CategoryScale,
   Chart as ChartJS,
   ChartData,
-  ChartOptions,
   Legend,
   LinearScale,
   Title,
@@ -34,44 +34,6 @@ interface SignUpContentsProps {
 }
 
 const SignUpContents: React.FC<SignUpContentsProps> = ({ data, today }) => {
-  const options: ChartOptions<'bar'> = {
-    responsive: true,
-    plugins: {
-      legend: {
-        display: false,
-      },
-    },
-    layout: {
-      padding: {
-        top: 20,
-      },
-    },
-    events: [],
-    scales: {
-      x: {
-        border: {
-          display: false,
-        },
-        grid: {
-          display: false,
-          drawTicks: false,
-        },
-      },
-      y: {
-        border: {
-          display: false,
-        },
-        grid: {
-          display: false,
-          drawTicks: false,
-        },
-        ticks: {
-          display: false,
-        },
-      },
-    },
-  };
-
   const filteredData = data.slice(0, 6).reverse();
   const labels = filteredData.map(item =>
     item.date.slice(-5).replace(/-/g, '.')
@@ -84,7 +46,9 @@ const SignUpContents: React.FC<SignUpContentsProps> = ({ data, today }) => {
       {
         data: dailyCounts,
         backgroundColor: filteredData.map(item =>
-          today === item.date.replace(/-/g, '.') ? '#066ADF' : '#DBDBDB'
+          today === item.date.replace(/-/g, '.')
+            ? CHART_COLORS.light.accent
+            : CHART_COLORS.light.primary
         ),
         barThickness: 15,
       },
@@ -94,13 +58,13 @@ const SignUpContents: React.FC<SignUpContentsProps> = ({ data, today }) => {
   return (
     <div className="relative w-3/5">
       <h1 className="text-black text-base	font-semibold mb-2">가입 수</h1>
-      <div className="flex gap-2 items-center rounded-lg border border-gray-300 bg-white py-4">
-        <div>
-          <Chart chartData={chartData} options={options} />
+      <div className="flex justify-between items-center rounded-lg border py-4 border-gray-200 dark:border-gray-800">
+        <div className="w-4/5">
+          <Chart chartData={chartData} options={BAR_CHART_OPTIONS} />
         </div>
-        <p className="flex text-gray text-xs w-2/5">
+        <p className="flex text-gray text-xs w-1/5">
           누적 가입 수
-          <span className="text-blue-500">
+          <span className="text-blue-600 dark:text-blue-400">
             {filteredData[filteredData.length - 1].date}
           </span>
         </p>
