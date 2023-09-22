@@ -14,6 +14,7 @@ const NavigationItem: React.FC<Props> = ({ menu, level }: Props) => {
   const hasSubMenu = menu.subMenu && menu.subMenu.length > 0;
   const router = useRouter();
   const pathname = usePathname();
+  const isParentMenu: boolean = level === 0;
   const parentTextColor: string =
     pathname === menu.path ? 'text-[#D8AD16]' : 'text-white';
   // TODO: child text color
@@ -28,33 +29,33 @@ const NavigationItem: React.FC<Props> = ({ menu, level }: Props) => {
 
   // TODO: Framer Motion 적용
   return (
-    <div>
+    <>
       <button
-        className={`flex justify-between items-center p-4 w-full
+        className={`flex justify-between items-center p-4 w-full cursor-pointer
           ${
-            level === 0
-              ? `${parentTextColor} bg-[#282B4A] border-b border-[#DFDFDF] border-opacity-50 h-16`
-              : `pl-${level * 4} text-black bg-[#D8D8D8]`
-          } cursor-pointer`}
+            isParentMenu
+              ? `border-b border-gray-100 border-opacity-50 h-14 text-base ${parentTextColor}`
+              : `text-black bg-gray-300 py-2 pl-${level * 4}`
+          }`}
         onClick={handleMenuClick}
       >
         {menu.name}
         {hasSubMenu &&
           level === 0 &&
-          (isOpen ? <SlArrowUp /> : <SlArrowDown />)}
+          (isOpen ? <SlArrowUp class="w-3" /> : <SlArrowDown class="w-3" />)}
       </button>
       {isOpen && hasSubMenu
         ? menu.subMenu?.map(subMenu => (
             <NavigationItem key={subMenu.id} menu={subMenu} level={level + 1} />
           ))
         : null}
-    </div>
+    </>
   );
 };
 
 const Navigation = () => {
   return (
-    <div className="w-1/4 h-screen overflow-y-auto bg-[#282B4A]">
+    <div className="w-60 h-screen overflow-y-auto bg-indigo-950">
       {MENU.map(menu => (
         <NavigationItem key={menu.id} menu={menu} level={0} />
       ))}
