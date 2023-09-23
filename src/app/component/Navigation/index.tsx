@@ -42,7 +42,11 @@ const NavigationItem: React.FC<Props> = ({ menu, level }: Props) => {
         {menu.name}
         {hasSubMenu &&
           level === 0 &&
-          (isOpen ? <SlArrowUp class="w-3" /> : <SlArrowDown class="w-3" />)}
+          (isOpen ? (
+            <SlArrowUp className="w-3" />
+          ) : (
+            <SlArrowDown className="w-3" />
+          ))}
       </button>
       {isOpen && hasSubMenu
         ? menu.subMenu?.map(subMenu => (
