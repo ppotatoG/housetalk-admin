@@ -1,7 +1,7 @@
 'use client';
 
 import { FiRefreshCcw } from 'react-icons/fi';
-import SignUpContents from '@/app/component/Dashboard/signUpContents';
+import UserSubscriptionTrend from '@/app/component/Dashboard/UserSubscriptionTrend';
 import GenderStatistics from '@/app/component/Dashboard/GenderStatistics';
 
 interface DUMMY_SIGNUP_CONTENTS_TYPE {
@@ -81,8 +81,11 @@ const Dashboard = () => {
           <FiRefreshCcw />
         </button>
       </div>
-      <div className="flex gap-2 mt-6">
-        <SignUpContents data={DUMMY_SIGNUP_CONTENTS} today="2023.09.19" />
+      <div className="flex gap-2 mt-6 h-full">
+        <UserSubscriptionTrend
+          data={DUMMY_SIGNUP_CONTENTS}
+          today="2023.09.19"
+        />
         <GenderStatistics data={DUMMY_GENDER_COUNTS} />
       </div>
     </>

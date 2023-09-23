@@ -28,12 +28,15 @@ interface DUMMY_SIGNUP_CONTENTS_TYPE {
   cumulative: number;
 }
 
-interface SignUpContentsProps {
+interface UserSubscriptionTrendProps {
   data: DUMMY_SIGNUP_CONTENTS_TYPE[];
   today: string;
 }
 
-const SignUpContents: React.FC<SignUpContentsProps> = ({ data, today }) => {
+const UserSubscriptionTrend: React.FC<UserSubscriptionTrendProps> = ({
+  data,
+  today,
+}) => {
   const filteredData = data.slice(0, 6).reverse();
   const labels = filteredData.map(item =>
     item.date.slice(-5).replace(/-/g, '.')
@@ -56,9 +59,9 @@ const SignUpContents: React.FC<SignUpContentsProps> = ({ data, today }) => {
   };
 
   return (
-    <div className="relative w-3/5">
-      <h1 className="text-black text-base	font-semibold mb-2">가입 수</h1>
-      <div className="flex justify-between items-center rounded-lg border py-4 border-gray-200 dark:border-gray-800">
+    <div className="relative flex-grow">
+      <h1 className="text-black text-base font-semibold mb-2">유저 가입 수</h1>
+      <div className="flex justify-between items-center h-full rounded-lg border py-4 border-gray-200 dark:border-gray-800">
         <div className="w-4/5">
           <Chart chartData={chartData} options={BAR_CHART_OPTIONS} />
         </div>
@@ -73,4 +76,4 @@ const SignUpContents: React.FC<SignUpContentsProps> = ({ data, today }) => {
   );
 };
 
-export default SignUpContents;
+export default UserSubscriptionTrend;

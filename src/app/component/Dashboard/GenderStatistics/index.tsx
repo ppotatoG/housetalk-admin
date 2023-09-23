@@ -53,9 +53,11 @@ const GenderStatistics: React.FC<GenderStatisticsProps> = ({ data }) => {
   };
 
   return (
-    <div className="w-1/5">
-      <h1 className="text-black text-base	font-semibold mb-2">유저 성별 통계</h1>
-      <div className="p-4 rounded-lg border border-gray-200 dark:border-gray-800">
+    <div className="w-1/3 h-full">
+      <h1 className="text-black text-base font-semibold mb-2">
+        유저 성별 통계
+      </h1>
+      <div className="p-6 h-full rounded-lg border border-gray-200 dark:border-gray-800">
         <Chart
           chartData={chartData}
           options={DOUGHNUT_CHART_OPTIONS as ChartConfiguration['options']}
