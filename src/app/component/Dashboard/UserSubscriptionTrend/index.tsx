@@ -61,7 +61,7 @@ const UserSubscriptionTrend: React.FC<UserSubscriptionTrendProps> = ({
   return (
     <div className="relative flex-grow">
       <h1 className="text-black text-base font-semibold mb-2">유저 가입 수</h1>
-      <div className="flex justify-between items-center h-full rounded-lg border py-4 border-gray-200 dark:border-gray-800">
+      <div className="flex justify-between items-center rounded-lg border py-4 border-gray-200 dark:border-gray-800">
         <div className="w-4/5">
           <Chart chartData={chartData} options={BAR_CHART_OPTIONS} />
         </div>

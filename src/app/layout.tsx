@@ -17,9 +17,9 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className={inter.className} suppressHydrationWarning={true}>
-        <div className="flex h-screen text-gray-950 dark:text-gray-50 text-sm">
+        <div className="grid grid-cols-[12rem,1fr] h-screen text-gray-950 dark:text-gray-50 text-sm overflow-auto">
           <Navigation />
-          <div className="w-full flex flex-col">
+          <div className="flex flex-col">
             <Header />
             <div className="p-4">{children}</div>
           </div>
