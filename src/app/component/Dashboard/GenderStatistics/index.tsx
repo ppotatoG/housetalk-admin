@@ -1,6 +1,10 @@
 import React from 'react';
 import Chart from './Chart';
-import { CHART_COLORS, DOUGHNUT_CHART_OPTIONS } from '@/constants/dashboard';
+import {
+  CHART_COLORS,
+  DASHBOARD_TITLES,
+  DOUGHNUT_CHART_OPTIONS,
+} from '@/constants/dashboard';
 
 import {
   BarElement,
@@ -50,7 +54,7 @@ const GenderStatistics: React.FC<GenderStatisticsProps> = ({ data }) => {
   return (
     <div className="w-1/3 h-full">
       <h1 className="text-black text-base font-semibold mb-2">
-        유저 성별 통계
+        {DASHBOARD_TITLES.USER_GENDER_STATISTICS}
       </h1>
       <div className="p-6 h-full rounded-lg border border-gray-200 dark:border-gray-800">
         <Chart

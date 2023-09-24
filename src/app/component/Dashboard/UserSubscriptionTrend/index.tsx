@@ -1,6 +1,10 @@
 import React from 'react';
 import Chart from './Chart';
-import { CHART_COLORS, BAR_CHART_OPTIONS } from '@/constants/dashboard';
+import {
+  CHART_COLORS,
+  BAR_CHART_OPTIONS,
+  DASHBOARD_TITLES,
+} from '@/constants/dashboard';
 
 import {
   BarElement,
@@ -54,7 +58,9 @@ const UserSubscriptionTrend: React.FC<UserSubscriptionTrendProps> = ({
 
   return (
     <div className="relative flex-grow">
-      <h1 className="text-black text-base font-semibold mb-2">유저 가입 수</h1>
+      <h1 className="text-black text-base font-semibold mb-2">
+        {DASHBOARD_TITLES.USER_SUBSCRIPTION_TREND}
+      </h1>
       <div className="flex justify-between items-center rounded-lg border py-4 border-gray-200 dark:border-gray-800">
         <div className="w-4/5">
           <Chart chartData={chartData} options={BAR_CHART_OPTIONS} />

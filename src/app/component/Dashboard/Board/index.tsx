@@ -1,6 +1,6 @@
 import React from 'react';
 import Item from './Item';
-import { BOARD_TITLE } from '@/constants/dashboard';
+import { BOARD_TITLE, DASHBOARD_TITLES } from '@/constants/dashboard';
 
 interface BoardProps {
   freeData: DUMMY_POSTS_TYPE[];
@@ -13,7 +13,7 @@ const Board = ({ freeData, recommendData, reviewData, now }: BoardProps) => {
   return (
     <div className="w-full mt-2">
       <h1 className="text-black text-base font-semibold mb-2">
-        게시판 업로드 현황
+        {DASHBOARD_TITLES.BOARD_UPLOAD_STATUS}
       </h1>
       <div className="flex gap-2">
         <Item data={freeData} title={BOARD_TITLE.free} now={now} />
