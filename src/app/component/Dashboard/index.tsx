@@ -3,11 +3,17 @@
 import { FiRefreshCcw } from 'react-icons/fi';
 import UserSubscriptionTrend from '@/app/component/Dashboard/UserSubscriptionTrend';
 import GenderStatistics from '@/app/component/Dashboard/GenderStatistics';
+import Board from '@/app/component/Dashboard/Board';
 
 interface DUMMY_SIGNUP_CONTENTS_TYPE {
   date: string;
   daily: number;
   cumulative: number;
+}
+
+interface DUMMY_POSTS_TYPE {
+  title: string;
+  update_at: string;
 }
 
 const DUMMY_SIGNUP_CONTENTS: DUMMY_SIGNUP_CONTENTS_TYPE[] = [
@@ -38,20 +44,29 @@ const DUMMY_GENDER_COUNTS = [
   { gender: 'Male', count: 550 },
 ];
 
-const DUMMY_FREE_BOARD_POSTS = Array.from({ length: 20 }, (_, i) => ({
-  title: `자유게시판 글 제목 ${i + 1}`,
-  time: `2023-09-${19 - i} 10:00`,
-}));
+const DUMMY_FREE_BOARD_POSTS: DUMMY_POSTS_TYPE[] = Array.from(
+  { length: 20 },
+  (_, i) => ({
+    title: `자유게시판 글 제목 자유게시판 글 제목 자유게시판 글 제목 ${i + 1}`,
+    update_at: `2023-09-${24 - i} 10:00`,
+  })
+);
 
-const DUMMY_RECOMMEND_ITEM_POSTS = Array.from({ length: 20 }, (_, i) => ({
-  title: `추천 아이템 제목 ${i + 1}`,
-  time: `2023-09-${19 - i} 11:00`,
-}));
+const DUMMY_RECOMMEND_ITEM_POSTS: DUMMY_POSTS_TYPE[] = Array.from(
+  { length: 20 },
+  (_, i) => ({
+    title: `추천 아이템 제목 추천 아이템 제목 추천 아이템 제목 ${i + 1}`,
+    update_at: `2023-09-${24 - i} 11:00`,
+  })
+);
 
-const DUMMY_HOUSE_REVIEW_POSTS = Array.from({ length: 20 }, (_, i) => ({
-  title: `집 리뷰 제목 ${i + 1}`,
-  time: `2023-09-${19 - i} 12:00`,
-}));
+const DUMMY_HOUSE_REVIEW_POSTS: DUMMY_POSTS_TYPE[] = Array.from(
+  { length: 20 },
+  (_, i) => ({
+    title: `집 리뷰 제목 집 리뷰 제목 집 리뷰 제목 ${i + 1}`,
+    update_at: `2023-09-${24 - i} 12:00`,
+  })
+);
 
 const Dashboard = () => {
   const now = new Date();
@@ -88,6 +103,11 @@ const Dashboard = () => {
         />
         <GenderStatistics data={DUMMY_GENDER_COUNTS} />
       </div>
+      <Board
+        freeData={DUMMY_FREE_BOARD_POSTS}
+        recommendData={DUMMY_RECOMMEND_ITEM_POSTS}
+        reviewData={DUMMY_HOUSE_REVIEW_POSTS}
+      />
     </>
   );
 };
