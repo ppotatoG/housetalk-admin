@@ -1,4 +1,22 @@
 module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
-  safelist: ['pl-4', 'pl-8'],
+  safelist: [
+    'pl-4',
+    'pl-8',
+    'p-4',
+    'w-full',
+    'cursor-pointer',
+    'bg-indigo-950',
+    'border-b',
+    'border-gray-100',
+    'border-opacity-50',
+    'h-14',
+    'text-yellow-500',
+    'text-white',
+    'bg-gray-300',
+    'text-black',
+    'py-2',
+    'font-semibold',
+    'hover:text-indigo-700',
+  ],
 };
