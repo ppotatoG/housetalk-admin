@@ -8,11 +8,11 @@ interface DUMMY_POSTS_TYPE {
 interface BoardItemProps {
   data: DUMMY_POSTS_TYPE[];
   title: string;
+  now: Date;
 }
 
-const item = ({ data, title }: BoardItemProps) => {
+const item = ({ data, title, now }: BoardItemProps) => {
   const timeAgo = (update_at: string) => {
-    const now = new Date();
     const postDate = new Date(update_at);
     const diffInMs = now.getTime() - postDate.getTime();
 

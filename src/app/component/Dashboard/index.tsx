@@ -45,7 +45,7 @@ const DUMMY_GENDER_COUNTS = [
 ];
 
 const DUMMY_FREE_BOARD_POSTS: DUMMY_POSTS_TYPE[] = Array.from(
-  { length: 20 },
+  { length: 10 },
   (_, i) => ({
     title: `자유게시판 글 제목 자유게시판 글 제목 자유게시판 글 제목 ${i + 1}`,
     update_at: `2023-09-${24 - i} 10:00`,
@@ -53,7 +53,7 @@ const DUMMY_FREE_BOARD_POSTS: DUMMY_POSTS_TYPE[] = Array.from(
 );
 
 const DUMMY_RECOMMEND_ITEM_POSTS: DUMMY_POSTS_TYPE[] = Array.from(
-  { length: 20 },
+  { length: 10 },
   (_, i) => ({
     title: `추천 아이템 제목 추천 아이템 제목 추천 아이템 제목 ${i + 1}`,
     update_at: `2023-09-${24 - i} 11:00`,
@@ -61,7 +61,7 @@ const DUMMY_RECOMMEND_ITEM_POSTS: DUMMY_POSTS_TYPE[] = Array.from(
 );
 
 const DUMMY_HOUSE_REVIEW_POSTS: DUMMY_POSTS_TYPE[] = Array.from(
-  { length: 20 },
+  { length: 10 },
   (_, i) => ({
     title: `집 리뷰 제목 집 리뷰 제목 집 리뷰 제목 ${i + 1}`,
     update_at: `2023-09-${24 - i} 12:00`,
@@ -107,6 +107,7 @@ const Dashboard = () => {
         freeData={DUMMY_FREE_BOARD_POSTS}
         recommendData={DUMMY_RECOMMEND_ITEM_POSTS}
         reviewData={DUMMY_HOUSE_REVIEW_POSTS}
+        now={now}
       />
     </>
   );
