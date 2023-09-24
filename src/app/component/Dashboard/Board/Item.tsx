@@ -1,10 +1,5 @@
 import { MdOutlineKeyboardArrowRight } from 'react-icons/md';
 
-interface DUMMY_POSTS_TYPE {
-  title: string;
-  update_at: string;
-}
-
 interface BoardItemProps {
   data: DUMMY_POSTS_TYPE[];
   title: string;

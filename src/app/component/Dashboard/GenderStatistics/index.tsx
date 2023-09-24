@@ -25,11 +25,6 @@ ChartJS.register(
   ArcElement
 );
 
-interface DUMMY_GENDER_COUNTS_TYPE {
-  gender: string;
-  count: number;
-}
-
 interface GenderStatisticsProps {
   data: DUMMY_GENDER_COUNTS_TYPE[];
 }

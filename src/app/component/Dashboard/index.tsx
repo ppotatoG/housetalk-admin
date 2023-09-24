@@ -5,17 +5,6 @@ import UserSubscriptionTrend from '@/app/component/Dashboard/UserSubscriptionTre
 import GenderStatistics from '@/app/component/Dashboard/GenderStatistics';
 import Board from '@/app/component/Dashboard/Board';
 
-interface DUMMY_SIGNUP_CONTENTS_TYPE {
-  date: string;
-  daily: number;
-  cumulative: number;
-}
-
-interface DUMMY_POSTS_TYPE {
-  title: string;
-  update_at: string;
-}
-
 const DUMMY_SIGNUP_CONTENTS: DUMMY_SIGNUP_CONTENTS_TYPE[] = [
   { date: '2023-09-19', daily: 5, cumulative: 1200 },
   { date: '2023-09-18', daily: 7, cumulative: 1195 },

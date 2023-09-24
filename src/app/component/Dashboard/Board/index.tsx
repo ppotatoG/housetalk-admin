@@ -2,11 +2,6 @@ import React from 'react';
 import Item from './Item';
 import { BOARD_TITLE } from '@/constants/dashboard';
 
-interface DUMMY_POSTS_TYPE {
-  title: string;
-  update_at: string;
-}
-
 interface BoardProps {
   freeData: DUMMY_POSTS_TYPE[];
   recommendData: DUMMY_POSTS_TYPE[];

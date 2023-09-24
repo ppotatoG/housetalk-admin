@@ -22,12 +22,6 @@ ChartJS.register(
   Legend
 );
 
-interface DUMMY_SIGNUP_CONTENTS_TYPE {
-  date: string;
-  daily: number;
-  cumulative: number;
-}
-
 interface UserSubscriptionTrendProps {
   data: DUMMY_SIGNUP_CONTENTS_TYPE[];
   today: string;
