@@ -27,11 +27,11 @@ const Text = ({
         className || ''
       }`}
     >
-      <label htmlFor={label} className="bg-gray-200 dark:bg-gray-800 p-2 w-1/2">
+      <label htmlFor={label} className="bg-gray-200 dark:bg-gray-800 p-2 w-1/3">
         {labelText}
       </label>
       <input
-        className="p-2 w-1/2"
+        className="p-2 w-2/3"
         type={type ? type : 'text'}
         id={label}
         value={value}

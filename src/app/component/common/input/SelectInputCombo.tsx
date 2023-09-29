@@ -7,10 +7,9 @@ interface TypeOption {
 }
 
 interface SelectInputComboProps {
-  selectLabel: string;
-  textLabel: string;
-  textValue: string;
-  setTextValue: (value: string) => void;
+  label: string;
+  searchTerm: string;
+  setSearchTerm: (value: string) => void;
   placeholder?: string;
   required?: boolean;
   selectedOption: TypeOption;
@@ -19,10 +18,9 @@ interface SelectInputComboProps {
 }
 
 const SelectInputCombo: React.FC<SelectInputComboProps> = ({
-  selectLabel,
-  textLabel,
-  textValue,
-  setTextValue,
+  label,
+  searchTerm,
+  setSearchTerm,
   placeholder,
   required,
   selectedOption,
@@ -36,7 +34,7 @@ const SelectInputCombo: React.FC<SelectInputComboProps> = ({
       <div className="border border-gray-200 dark:border-gray-800 flex items-center w-1/2">
         <div className="w-1/3 relative">
           <button
-            className="bg-gray-200 dark:bg-gray-800 p-2 block w-full text-left flex items-center justify-between"
+            className="bg-gray-200 dark:bg-gray-800 p-2 w-full text-left flex items-center justify-between"
             type="button"
             onClick={() => setIsOpen(!isOpen)}
           >
@@ -49,12 +47,14 @@ const SelectInputCombo: React.FC<SelectInputComboProps> = ({
           </button>
 
           {isOpen && (
-            <div className="absolute z-10 w-56 origin-top-right rounded-md bg-white shadow-lg focus:outline-none">
+            <div className="absolute mt-1 z-10 w-full origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none transition-transform transform duration-100 ease-out">
               <div className="py-1">
                 {typeOptions.map(option => (
                   <button
                     key={option.id}
-                    className="text-gray-700 block w-full px-4 py-2 text-left text-sm"
+                    className={`text-gray-700 block w-full px-4 py-2 text-left text-sm hover:bg-gray-50 ${
+                      option.id === selectedOption.id ? 'font-bold' : ''
+                    }`}
                     onClick={() => {
                       setTypeOption(option);
                       setIsOpen(false);
@@ -68,14 +68,14 @@ const SelectInputCombo: React.FC<SelectInputComboProps> = ({
           )}
         </div>
         <div className="flex flex-grow items-center">
-          <label htmlFor={textLabel}>
+          <label htmlFor={label}>
             <input
               className="p-2"
               type="text"
-              id={textLabel}
-              value={textValue}
+              id={label}
+              value={searchTerm}
               placeholder={placeholder || undefined}
-              onChange={e => setTextValue(e.target.value)}
+              onChange={e => setSearchTerm(e.target.value)}
               {...(required ? { required: true } : {})}
             />
           </label>
