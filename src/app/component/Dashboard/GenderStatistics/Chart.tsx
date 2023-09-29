@@ -34,12 +34,10 @@ const Chart: React.FC<ChartProps> = ({ chartData, options }) => {
             const malePercentage = Math.round((maleValue / total) * 100);
             const femalePercentage = Math.round((femaleValue / total) * 100);
 
-            let displayText = '';
-            if (malePercentage > femalePercentage) {
-              displayText = `남 ${malePercentage}%`;
-            } else {
-              displayText = `여 ${femalePercentage}%`;
-            }
+            const displayText =
+              malePercentage > femalePercentage
+                ? `남 ${malePercentage}%`
+                : `여 ${femalePercentage}%`;
 
             ctx.fillText(displayText, chart.width / 2, chart.height / 2);
           },
