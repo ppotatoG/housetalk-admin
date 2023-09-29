@@ -1,3 +1,8 @@
+import React, { useState, useEffect } from 'react';
+
+import RequiredMark from './RequiredMark';
+import ToggleDisableButton from './ToggleDisableButton';
+
 interface TextProps {
   label: string;
   value: string;
@@ -10,36 +15,57 @@ interface TextProps {
   className?: string;
 }
 
-const Text = ({
+const Text: React.FC<TextProps> = ({
   label,
   value,
   setValue,
   labelText,
   placeholder,
   type,
-  required,
-  disabled,
+  required = false,
+  disabled = false,
   className,
-}: TextProps) => {
+}) => {
+  const [isDisabled, setIsDisabled] = useState(disabled);
+
+  useEffect(() => {
+    if (isDisabled && !required) {
+      setValue(''); // Clearing value when disabled and not required.
+    }
+  }, [isDisabled, setValue, required]);
+
+  const handleDisableToggle = () => {
+    setIsDisabled(!isDisabled);
+  };
+
   return (
     <div
-      className={`border border-gray-200 dark:border-gray-800 flex items-center w-1/2 ${
+      className={`relative border border-gray-200 dark:border-gray-800 flex items-center w-1/2 ${
         className || ''
       }`}
     >
       <label htmlFor={label} className="bg-gray-200 dark:bg-gray-800 p-2 w-1/3">
         {labelText}
+        {required && <RequiredMark required={required} />}
       </label>
       <input
-        className="p-2 w-2/3"
-        type={type ? type : 'text'}
+        className={`p-2 w-2/3 pr-8 ${
+          isDisabled ? 'bg-gray-50 text-gray-300' : ''
+        }`}
+        type={type || 'text'}
         id={label}
         value={value}
-        placeholder={placeholder || undefined}
-        disabled={disabled || undefined}
+        placeholder={placeholder}
+        disabled={isDisabled}
         onChange={e => setValue(e.target.value)}
-        {...(required ? { required: true } : {})}
+        required={required}
       />
+      {!required && (
+        <ToggleDisableButton
+          required={required}
+          handleDisableToggle={handleDisableToggle}
+        />
+      )}
     </div>
   );
 };

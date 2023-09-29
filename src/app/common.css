@@ -1,3 +1,7 @@
+input:disabled::placeholder {
+    color: rgb(209 213 219 / var(--tw-text-opacity));
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
