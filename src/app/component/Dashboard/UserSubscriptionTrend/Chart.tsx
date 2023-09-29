@@ -1,10 +1,10 @@
-import { ChartData, ChartConfiguration } from 'chart.js';
+import { ChartData, ChartOptions } from 'chart.js';
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
 
 interface ChartProps {
   chartData: ChartData<'bar'>;
-  options: ChartConfiguration['options'];
+  options: ChartOptions<'bar'>;
 }
 
 const Chart: React.FC<ChartProps> = ({ chartData, options }) => {

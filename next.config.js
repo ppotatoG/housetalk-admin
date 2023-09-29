@@ -1,5 +1,4 @@
-module.exports = {
-  experimental: {
-    appDir: true,
-  },
+const nextConfig = {
+  output: 'export',
 };
+module.exports = nextConfig;

@@ -1,17 +1,17 @@
-import { ChartData, ChartConfiguration } from 'chart.js';
+import { ChartData, ChartOptions } from 'chart.js';
 import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
 
 interface ChartProps {
   chartData: ChartData<'doughnut'>;
-  options: ChartConfiguration['options'];
+  options: ChartOptions<'doughnut'>;
 }
 
 const Chart: React.FC<ChartProps> = ({ chartData, options }) => {
   return (
     <Doughnut
       data={chartData}
-      options={options as ChartConfiguration['options']}
+      options={options}
       plugins={[
         {
           id: 'genderStatistics',

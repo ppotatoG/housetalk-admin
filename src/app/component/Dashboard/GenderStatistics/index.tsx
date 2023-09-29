@@ -8,7 +8,6 @@ import {
   Title,
   Tooltip,
   ArcElement,
-  ChartConfiguration,
 } from 'chart.js';
 import React from 'react';
 
@@ -58,10 +57,7 @@ const GenderStatistics: React.FC<GenderStatisticsProps> = ({ data }) => {
         {DASHBOARD_TITLES.USER_GENDER_STATISTICS}
       </h1>
       <div className="p-6 h-full rounded-lg border border-gray-200 dark:border-gray-800">
-        <Chart
-          chartData={chartData}
-          options={DOUGHNUT_CHART_OPTIONS as ChartConfiguration['options']}
-        />
+        <Chart chartData={chartData} options={DOUGHNUT_CHART_OPTIONS} />
       </div>
     </div>
   );
