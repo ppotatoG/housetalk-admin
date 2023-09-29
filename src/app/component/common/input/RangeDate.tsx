@@ -1,9 +1,9 @@
+import moment from 'moment';
 import React, { useState } from 'react';
 import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
-import { TbTilde } from 'react-icons/tb';
 import { BsCalendar3 } from 'react-icons/bs';
-import moment from 'moment';
+import { TbTilde } from 'react-icons/tb';
+import 'react-calendar/dist/Calendar.css';
 
 type ValuePiece = Date | null;
 type Value = ValuePiece | [ValuePiece, ValuePiece];

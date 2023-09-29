@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { COLOR_CLASSES } from '@/constants/buttons';
 
 type ButtonColors = 'default' | 'error' | 'warning';

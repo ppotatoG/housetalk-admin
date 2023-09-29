@@ -1,11 +1,3 @@
-import React from 'react';
-import Chart from './Chart';
-import {
-  CHART_COLORS,
-  BAR_CHART_OPTIONS,
-  DASHBOARD_TITLES,
-} from '@/constants/dashboard';
-
 import {
   BarElement,
   CategoryScale,
@@ -16,6 +8,15 @@ import {
   Title,
   Tooltip,
 } from 'chart.js';
+import React from 'react';
+
+import Chart from './Chart';
+
+import {
+  CHART_COLORS,
+  BAR_CHART_OPTIONS,
+  DASHBOARD_TITLES,
+} from '@/constants/dashboard';
 
 ChartJS.register(
   CategoryScale,

@@ -1,9 +1,10 @@
 'use client';
 
 import { FiRefreshCcw } from 'react-icons/fi';
-import UserSubscriptionTrend from '@/app/component/Dashboard/UserSubscriptionTrend';
-import GenderStatistics from '@/app/component/Dashboard/GenderStatistics';
+
 import Board from '@/app/component/Dashboard/Board';
+import GenderStatistics from '@/app/component/Dashboard/GenderStatistics';
+import UserSubscriptionTrend from '@/app/component/Dashboard/UserSubscriptionTrend';
 
 const DUMMY_SIGNUP_CONTENTS: DUMMY_SIGNUP_CONTENTS_TYPE[] = [
   { date: '2023-09-19', daily: 5, cumulative: 1200 },

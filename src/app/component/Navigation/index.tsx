@@ -1,6 +1,8 @@
 import React from 'react';
-import { MENU } from '@/constants/menu';
+
 import NavigationItem from './NavigationItem';
+
+import { MENU } from '@/constants/menu';
 
 const Navigation = () => {
   return (

@@ -1,5 +1,5 @@
-import React from 'react';
 import { usePathname } from 'next/navigation';
+import React from 'react';
 import { SlArrowDown, SlArrowUp } from 'react-icons/sl';
 
 interface NavigationButtonProps {

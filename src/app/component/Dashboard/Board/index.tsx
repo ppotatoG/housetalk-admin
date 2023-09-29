@@ -1,5 +1,7 @@
 import React from 'react';
+
 import Item from './Item';
+
 import { BOARD_TITLE, DASHBOARD_TITLES } from '@/constants/dashboard';
 
 interface BoardProps {

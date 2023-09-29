@@ -1,6 +1,6 @@
-import { Bar } from 'react-chartjs-2';
 import { ChartData, ChartConfiguration } from 'chart.js';
 import React from 'react';
+import { Bar } from 'react-chartjs-2';
 
 interface ChartProps {
   chartData: ChartData<'bar'>;
