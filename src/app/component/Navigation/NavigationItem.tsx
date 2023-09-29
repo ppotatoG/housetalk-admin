@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 
-import NavigationButton from '@/app/component/Navigation/NavigationButton';
+import NavigationButton from '@/component/Navigation/NavigationButton';
 
 interface NavigationItemProps {
   menu: Menu;

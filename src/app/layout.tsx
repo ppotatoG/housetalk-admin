@@ -6,8 +6,8 @@ import React from 'react';
 
 const inter = Inter({ subsets: ['latin'] });
 
-import Header from '@/app/component/Header';
-import Navigation from '@/app/component/Navigation';
+import Header from '@/component/Header';
+import Navigation from '@/component/Navigation';
 
 export default function RootLayout({
   children,

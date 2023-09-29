@@ -23,9 +23,8 @@
       }
     ],
     "paths": {
-      "@/*": [
-        "./src/*"
-      ]
+      "@/component/*": ["src/app/component/*"],
+      "@/constants/*": ["src/constants/*"],
     }
   },
   "include": [
