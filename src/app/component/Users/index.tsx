@@ -1,13 +1,12 @@
 'use client';
 
-import { useState } from 'react';
 import moment from 'moment';
+import React, { useState } from 'react';
 
-import PageHeader from '@/app/component/common/header/PageHeader';
-
-import { SelectInputCombo, RangeDate } from '@/app/component/common/input';
-
-import { PAGE_HEADERS } from '@/constants/PAGE_HEADERS';
+import Button from '@/component/common/Button';
+import PageHeader from '@/component/common/header/PageHeader';
+import { SelectInputCombo, RangeDate } from '@/component/common/input';
+import { PAGE_HEADERS } from '@/constants/pageHeaders';
 import { SEARCH_USERS_TYPE } from '@/constants/users';
 
 const Users = () => {
@@ -18,19 +17,24 @@ const Users = () => {
   );
   const [maxValue, setMaxValue] = useState<Date>(new Date());
 
-  const [required, setRequired] = useState<boolean>(false);
-
+  const handelSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log(searchTerm, selectedType, minValue, maxValue);
+  };
   return (
     <>
       <div>
         <PageHeader title={PAGE_HEADERS.USERS} />
-        <div className="flex flex-col gap-4 mt-4">
+        <form
+          className="flex flex-col gap-4 mt-4 border-b pb-4 border-gray-200 dark:border-gray-800"
+          onSubmit={handelSubmit}
+        >
           <SelectInputCombo
             label="입력"
             searchTerm={searchTerm}
             setSearchTerm={setSearchTerm}
             placeholder="검색어를 입력하세요"
-            required={required}
+            required={true}
             selectedOption={selectedType}
             setTypeOption={setSelectedType}
             typeOptions={SEARCH_USERS_TYPE}
@@ -41,10 +45,18 @@ const Users = () => {
             setMinValue={setMinValue}
             maxValue={maxValue}
             setMaxValue={setMaxValue}
-            labelRangeDate={'가입기간'}
-            required={required}
+            labelRangeDate="가입기간"
+            required={false}
           />
-        </div>
+
+          <Button
+            variant="filled"
+            color="default"
+            text="검색"
+            padding="px-6 py-3"
+            type="submit"
+          />
+        </form>
       </div>
     </>
   );
