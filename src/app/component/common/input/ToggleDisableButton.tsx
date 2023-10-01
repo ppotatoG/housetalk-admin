@@ -16,6 +16,7 @@ const ToggleDisableButton: React.FC<ToggleDisableButtonProps> = ({
       className="absolute left-auto right-0 top-1/2 transform -translate-y-1/2 p-2 text-gray-950"
       aria-label="Disable toggle"
       onClick={handleDisableToggle}
+      type="button"
     >
       <AiFillCloseCircle />
     </button>
