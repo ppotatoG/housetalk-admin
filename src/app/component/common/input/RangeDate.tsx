@@ -1,6 +1,6 @@
 import moment from 'moment';
 import React, { useState, useEffect } from 'react';
-import Calendar from 'react-calendar';
+import { Calendar } from 'react-calendar';
 import { BsCalendar3 } from 'react-icons/bs';
 import { TbTilde } from 'react-icons/tb';
 
