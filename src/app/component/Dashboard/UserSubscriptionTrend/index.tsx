@@ -10,13 +10,13 @@ import {
 } from 'chart.js';
 import React from 'react';
 
-import Chart from './Chart';
-
 import {
   CHART_COLORS,
   BAR_CHART_OPTIONS,
   DASHBOARD_TITLES,
 } from '@/constants/dashboard';
+
+import Chart from './Chart';
 
 ChartJS.register(
   CategoryScale,

@@ -1,8 +1,8 @@
 import React from 'react';
 
-import Item from './Item';
-
 import { BOARD_TITLE, DASHBOARD_TITLES } from '@/constants/dashboard';
+
+import Item from './Item';
 
 interface BoardProps {
   freeData: DUMMY_POSTS_TYPE[];
