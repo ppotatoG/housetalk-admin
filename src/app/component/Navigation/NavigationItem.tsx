@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import NavigationButton from '@/component/Navigation/NavigationButton';
 
@@ -22,18 +22,18 @@ const NavigationItem: React.FC<NavigationItemProps> = ({ menu, level }) => {
     closed: { opacity: 0, height: 0, overflow: 'hidden' },
   };
 
-  const calculateMenuHeight = (menuList: Menu[]): number => {
+  const calculateMenuHeight = useCallback((menuList: Menu[]): number => {
     let totalHeight = 0;
 
     menuList.forEach(item => {
       totalHeight += MENU_HEIGHT;
       if (item.subMenu) {
-        totalHeight += calculateMenuHeight(item.subMenu);
+        totalHeight += calculateMenuHeight(item.subMenu); // 재귀 호출에 메모화된 버전을 사용
       }
     });
 
     return totalHeight;
-  };
+  }, []);
 
   useEffect(() => {
     if (isOpen) {
@@ -41,7 +41,7 @@ const NavigationItem: React.FC<NavigationItemProps> = ({ menu, level }) => {
     } else {
       setMenuHeight(0);
     }
-  }, [isOpen, menu]);
+  }, [calculateMenuHeight, isOpen, menu]);
 
   const handleMenuClick = () => {
     if (menu.path) {
