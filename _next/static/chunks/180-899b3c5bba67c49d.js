@@ -1,4 +1,4 @@
-(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[180],{8788:function(t){t.exports={style:{fontFamily:"'__Inter_e66fe9', '__Inter_Fallback_e66fe9'",fontStyle:"normal"},className:"__className_e66fe9"}},622:function(t,e,i){"use strict";/**
+(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[180],{8788:function(t){t.exports={style:{fontFamily:"'__Inter_26c384', '__Inter_Fallback_26c384'",fontStyle:"normal"},className:"__className_26c384"}},622:function(t,e,i){"use strict";/**
  * @license React
  * react-jsx-runtime.production.min.js
  *
