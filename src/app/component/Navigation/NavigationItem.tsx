@@ -28,7 +28,7 @@ const NavigationItem: React.FC<NavigationItemProps> = ({ menu, level }) => {
     menuList.forEach(item => {
       totalHeight += MENU_HEIGHT;
       if (item.subMenu) {
-        totalHeight += calculateMenuHeight(item.subMenu); // 재귀 호출에 메모화된 버전을 사용
+        totalHeight += calculateMenuHeight(item.subMenu);
       }
     });
 

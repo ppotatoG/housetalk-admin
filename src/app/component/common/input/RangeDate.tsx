@@ -5,6 +5,7 @@ import { BsCalendar3 } from 'react-icons/bs';
 import { TbTilde } from 'react-icons/tb';
 
 import 'react-calendar/dist/Calendar.css';
+
 import RequiredMark from './RequiredMark';
 import ToggleDisableButton from './ToggleDisableButton';
 
@@ -39,8 +40,8 @@ const RangeDate: React.FC<RangeDateProps> = ({
 
   useEffect(() => {
     if (isDisabled && !required) {
-      setMinValue(new Date()); // Default date, you can adjust as needed.
-      setMaxValue(new Date()); // Default date, you can adjust as needed.
+      setMinValue(new Date());
+      setMaxValue(new Date());
     }
   }, [isDisabled, setMinValue, setMaxValue, required]);
 
@@ -60,65 +61,71 @@ const RangeDate: React.FC<RangeDateProps> = ({
   };
 
   return (
-    <>
+    <div
+      className={`relative border border-gray-200 dark:border-gray-800 flex items-center w-1/2 ${
+        className || ''
+      }`}
+    >
+      <div className="bg-gray-200 dark:bg-gray-800 p-2 w-1/3">
+        {labelRangeDate}
+        {required && <RequiredMark required={required} />}
+      </div>
       <div
-        className={`border border-gray-200 dark:border-gray-800 flex items-center w-1/2 ${
-          className || ''
+        className={`p-2 flex gap-4 items-center w-2/3 relative ${
+          isDisabled && 'bg-gray-50 text-gray-300'
         }`}
       >
-        <div className="bg-gray-200 dark:bg-gray-800 p-2 w-1/3">
-          {labelRangeDate}
-          {required && <RequiredMark required={required} />}
-        </div>
-        <div
-          className={`p-2 flex gap-4 items-center w-2/3 relative ${
-            isDisabled && 'bg-gray-50 text-gray-300'
-          }`}
+        <button
+          type="button"
+          className="flex gap-2 items-center"
+          disabled={disabled}
+          onClick={() => {
+            if (!isDisabled) {
+              setShowCalendar(prev => (prev === 'min' ? null : 'min'));
+            }
+          }}
         >
-          <button
-            className="flex gap-2 items-center"
-            disabled={disabled}
-            onClick={() =>
-              !isDisabled && setShowCalendar(prev => (prev ? prev : 'min'))
+          {moment(minValue).format('YYYY-MM-DD')}
+          <BsCalendar3 />
+        </button>
+        <TbTilde />
+        <button
+          type="button"
+          className="flex gap-2 items-center"
+          disabled={disabled}
+          onClick={() => {
+            if (!isDisabled) {
+              setShowCalendar(prev => (prev === 'max' ? null : 'max'));
             }
-          >
-            {moment(minValue).format('YYYY-MM-DD')}
-            <BsCalendar3 />
-          </button>
-          <TbTilde />
-          <button
-            className="flex gap-2 items-center"
-            disabled={disabled}
-            onClick={() =>
-              !isDisabled && setShowCalendar(prev => (prev ? prev : 'max'))
-            }
-          >
-            {moment(maxValue).format('YYYY-MM-DD')}
-            <BsCalendar3 />
-          </button>
-          {!required && (
-            <ToggleDisableButton
-              required={required}
-              handleDisableToggle={handleDisableToggle}
-            />
-          )}
-        </div>
+          }}
+        >
+          {moment(maxValue).format('YYYY-MM-DD')}
+          <BsCalendar3 />
+        </button>
+        {!required && (
+          <ToggleDisableButton
+            required={required}
+            handleDisableToggle={handleDisableToggle}
+          />
+        )}
       </div>
-      {!disabled && showCalendar === 'min' && (
-        <Calendar
-          locale="ko"
-          onChange={(value: Value) => handleDateChange(value, 'min')}
-          value={minValue}
-        />
-      )}
-      {!disabled && showCalendar === 'max' && (
-        <Calendar
-          locale="ko"
-          onChange={(value: Value) => handleDateChange(value, 'max')}
-          value={maxValue}
-        />
-      )}
-    </>
+      <div className="absolute" style={{ top: '120%' }}>
+        {!disabled && showCalendar === 'min' && (
+          <Calendar
+            locale="ko"
+            onChange={(value: Value) => handleDateChange(value, 'min')}
+            value={minValue}
+          />
+        )}
+        {!disabled && showCalendar === 'max' && (
+          <Calendar
+            locale="ko"
+            onChange={(value: Value) => handleDateChange(value, 'max')}
+            value={maxValue}
+          />
+        )}
+      </div>
+    </div>
   );
 };
 

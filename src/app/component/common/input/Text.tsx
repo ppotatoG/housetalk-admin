@@ -30,7 +30,7 @@ const Text: React.FC<TextProps> = ({
 
   useEffect(() => {
     if (isDisabled && !required) {
-      setValue(''); // Clearing value when disabled and not required.
+      setValue('');
     }
   }, [isDisabled, setValue, required]);
 
