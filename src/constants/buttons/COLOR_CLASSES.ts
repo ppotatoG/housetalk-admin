@@ -17,7 +17,7 @@ const COLOR_CLASSES: Record<
     darkBase: 'dark:bg-indigo-900',
     darkHover: 'dark:hover:bg-indigo-100',
     text: 'text-white',
-    border: 'border-indigo-960',
+    border: 'border-indigo-950',
     darkText: 'text-indigo-900',
     darkBorder: 'dark:border-indigo-200',
   },
