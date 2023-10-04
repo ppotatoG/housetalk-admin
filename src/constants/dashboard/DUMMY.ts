@@ -21,9 +21,9 @@ const DUMMY_SIGNUP_CONTENTS: DUMMY_SIGNUP_CONTENTS_TYPE[] = [
   { date: '2023-08-31', daily: 5, cumulative: 1083 },
 ];
 
-const DUMMY_GENDER_COUNTS = [
-  { gender: 'Female', count: 650 },
-  { gender: 'Male', count: 550 },
+const DUMMY_GENDER_COUNTS: { gender: gender; count: number }[] = [
+  { gender: 'female', count: 650 },
+  { gender: 'male', count: 550 },
 ];
 
 const DUMMY_FREE_BOARD_POSTS: DUMMY_POSTS_TYPE[] = Array.from(

@@ -34,7 +34,7 @@ interface GenderStatisticsProps {
 }
 
 const GenderStatistics: React.FC<GenderStatisticsProps> = ({ data }) => {
-  const labels = ['Female', 'Male'];
+  const labels = ['female', 'male'];
   const genders = data.map(item => item.gender);
 
   const chartData: ChartData<'doughnut'> = {
@@ -43,7 +43,7 @@ const GenderStatistics: React.FC<GenderStatisticsProps> = ({ data }) => {
       {
         data: data.map(v => v.count),
         backgroundColor: genders.map(gender =>
-          gender === 'Female'
+          gender === 'female'
             ? CHART_COLORS.light.female
             : CHART_COLORS.light.male
         ),

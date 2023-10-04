@@ -25,8 +25,8 @@ const Chart: React.FC<ChartProps> = ({ chartData, options }) => {
             const genderLabels = chart.data.labels as string[];
             const genderData = chart.data.datasets?.[0]?.data as number[];
 
-            const maleIndex = genderLabels.indexOf('Male');
-            const femaleIndex = genderLabels.indexOf('Female');
+            const maleIndex = genderLabels.indexOf('male');
+            const femaleIndex = genderLabels.indexOf('female');
             const maleValue = genderData[maleIndex] || 0;
             const femaleValue = genderData[femaleIndex] || 0;
 

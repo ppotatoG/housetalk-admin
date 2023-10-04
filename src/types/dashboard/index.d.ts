@@ -1,5 +1,5 @@
 interface DUMMY_GENDER_COUNTS_TYPE {
-  gender: string;
+  gender: gender;
   count: number;
 }
 
@@ -13,3 +13,5 @@ interface DUMMY_POSTS_TYPE {
   title: string;
   update_at: string;
 }
+
+type gender = 'female' | 'male';
