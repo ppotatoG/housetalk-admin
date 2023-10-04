@@ -7,10 +7,11 @@ type ButtonColors = 'default' | 'error' | 'warning';
 interface ButtonProps {
   variant: 'filled' | 'outlined';
   color?: ButtonColors;
-  text: string;
+  text?: string;
   onClick?: () => void;
   padding?: string;
   type: 'button' | 'submit' | 'reset';
+  children?: React.ReactNode;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -20,6 +21,7 @@ const Button: React.FC<ButtonProps> = ({
   onClick,
   padding = 'px-4 py-2',
   type = 'button',
+  children,
 }) => {
   const baseClasses = [
     padding,
@@ -29,6 +31,7 @@ const Button: React.FC<ButtonProps> = ({
     'duration-200',
     'w-fit',
     'ml-auto',
+    'hover:opacity-90',
   ].join(' ');
 
   const currentColor: ButtonColorClasses = COLOR_CLASSES[color];
@@ -41,15 +44,13 @@ const Button: React.FC<ButtonProps> = ({
     currentColor.text,
     currentColor.border,
     currentColor.darkBorder,
-    'hover:opacity-90',
   ].join(' ');
 
   const outlinedClasses = [
     'border',
-    currentColor.text,
+    currentColor.border,
+    currentColor.darkText,
     `dark:text-${color}-600`,
-    `hover:bg-${color}-50`,
-    `dark:hover:bg-${color}-600`,
   ].join(' ');
 
   return (
@@ -60,7 +61,7 @@ const Button: React.FC<ButtonProps> = ({
       onClick={onClick}
       type={type}
     >
-      {text}
+      {text || children}
     </button>
   );
 };
