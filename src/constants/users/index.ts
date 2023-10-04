@@ -1,3 +1,5 @@
-import { SEARCH_USERS_TYPE } from '@/constants/users/SEARCH_USERS_TYPE';
+import { SEARCH_USERS_TYPE } from './SEARCH_USERS_TYPE';
+import { USERS } from './USERS';
+import { USERS_TABLE_HEADER } from './USERS_TABLE_HEADER';
 
-export { SEARCH_USERS_TYPE };
+export { SEARCH_USERS_TYPE, USERS, USERS_TABLE_HEADER };
