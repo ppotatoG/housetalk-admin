@@ -1,4 +1,4 @@
-export const USERS: User[] = [
+export const DUMMY_USERS: User[] = [
   {
     id: 'jinho9357',
     password: 'password123',

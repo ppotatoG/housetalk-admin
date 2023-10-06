@@ -12,7 +12,7 @@ import { PAGE_HEADERS } from '@/constants/pageHeaders';
 import { TABLE_ROW_LIMIT } from '@/constants/TABLE_ROW_LIMIT';
 import {
   SEARCH_USERS_TYPE,
-  USERS,
+  DUMMY_USERS,
   USERS_TABLE_HEADER,
 } from '@/constants/users';
 
@@ -30,7 +30,7 @@ const Users = () => {
     e.preventDefault();
 
     setUsers(
-      USERS.map(user => ({
+      DUMMY_USERS.map(user => ({
         id: user.id,
         name: user.name,
         gender: user.gender,
@@ -47,7 +47,7 @@ const Users = () => {
   };
 
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const totalPages = USERS.length / TABLE_ROW_LIMIT;
+  const totalPages = DUMMY_USERS.length / TABLE_ROW_LIMIT;
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
