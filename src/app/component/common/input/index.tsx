@@ -1,3 +1,4 @@
+import Radio from './Radio';
 import RangeDate from './RangeDate';
 import ReadOnlyEditableText from './ReadOnlyEditableText';
 import ReadOnlyRadio from './ReadOnlyRadio';
@@ -12,4 +13,5 @@ export {
   ReadOnlyRadio,
   ReadOnlyText,
   ReadOnlyEditableText,
+  Radio,
 };
