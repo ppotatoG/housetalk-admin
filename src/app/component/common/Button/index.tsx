@@ -3,6 +3,7 @@ import React from 'react';
 import { COLOR_CLASSES } from '@/constants/buttons';
 
 type ButtonColors = 'default' | 'error' | 'warning';
+type ButtonSizes = 'small' | 'medium' | 'large';
 
 interface ButtonProps {
   variant: 'filled' | 'outlined';
@@ -10,8 +11,9 @@ interface ButtonProps {
   text?: string;
   onClick?: () => void;
   padding?: string;
-  type: 'button' | 'submit' | 'reset';
+  type?: 'button' | 'submit' | 'reset';
   children?: React.ReactNode;
+  size?: ButtonSizes;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -22,6 +24,7 @@ const Button: React.FC<ButtonProps> = ({
   padding = 'px-4 py-2',
   type = 'button',
   children,
+  size = 'medium',
 }) => {
   const baseClasses = [
     padding,
@@ -33,6 +36,12 @@ const Button: React.FC<ButtonProps> = ({
     'ml-auto',
     'hover:opacity-90',
   ].join(' ');
+
+  const sizeClasses = {
+    small: 'text-xs',
+    medium: '',
+    large: 'text-xl',
+  };
 
   const currentColor: ButtonColorClasses = COLOR_CLASSES[color];
 
@@ -55,7 +64,7 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <button
-      className={`${baseClasses} ${
+      className={`${baseClasses} ${sizeClasses[size]} ${
         variant === 'filled' ? filledClasses : outlinedClasses
       }`}
       onClick={onClick}
