@@ -19,40 +19,36 @@ const Radio: React.FC<TextProps> = ({
       <div className="px-3 w-2/3 flex gap-8 items-center">
         {radioList.map(radio => {
           return (
-            <>
-              <label
-                key={radio.label}
-                className="relative flex items-center cursor-pointer"
-                htmlFor={radio.label}
+            <label
+              key={radio.id}
+              className="relative flex items-center gap-2 cursor-pointer py-3"
+              htmlFor={radio.id}
+            >
+              <input
+                id={radio.id}
+                name="type"
+                type="radio"
+                onChange={() => setValue(radio)}
+                className="appearance-none rounded-full h-5 w-5 border border-indigo-950"
+              />
+              <span
+                className={
+                  value.id === radio.id
+                    ? 'absolute left-1 flex items-center'
+                    : 'hidden'
+                }
               >
-                <input
-                  id={radio.label}
-                  name="type"
-                  type="radio"
-                  onChange={() => setValue(radio)}
-                  className="appearance-none rounded-full h-5 w-5 border border-blue-700 text-blue-500 transition-all hover:border-blue-500"
-                />
-                <span
-                  className={
-                    value.label === radio.label
-                      ? 'absolute left-1 flex items-center'
-                      : 'hidden'
-                  }
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-3 w-3"
+                  viewBox="0 0 16 16"
+                  fill="#1d1b4b"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-3 w-3"
-                    viewBox="0 0 16 16"
-                    fill="currentColor"
-                  >
-                    <circle cx="8" cy="8" r="6"></circle>
-                  </svg>
-                </span>
-                <span className="ml-4 cursor-pointer text-gray-700">
-                  {radio.label}
-                </span>
-              </label>
-            </>
+                  <circle cx="8" cy="8" r="6"></circle>
+                </svg>
+              </span>
+              <span>{radio.label}</span>
+            </label>
           );
         })}
       </div>
