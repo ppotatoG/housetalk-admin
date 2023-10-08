@@ -22,11 +22,11 @@ const ReadOnlyRadio: React.FC<TextProps> = ({
             <>
               <label
                 key={index}
-                className="relative flex items-center cursor-pointer p-3"
-                htmlFor={radio.value as string}
+                className="relative flex items-center cursor-pointer"
+                htmlFor={radio.label}
               >
                 <input
-                  id={radio.value as string}
+                  id={radio.label}
                   name="type"
                   type="radio"
                   onChange={() => setValue(radio)}
@@ -35,7 +35,7 @@ const ReadOnlyRadio: React.FC<TextProps> = ({
                 <span
                   className={
                     value.label === radio.label
-                      ? 'absolute left-4 flex items-center'
+                      ? 'absolute left-1 flex items-center'
                       : 'hidden'
                   }
                 >
