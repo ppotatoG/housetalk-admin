@@ -14,3 +14,17 @@ interface MenuWithPath extends BaseMenu {
 }
 
 type Menu = MenuWithSubMenu | MenuWithPath;
+
+interface StyleConfig {
+  background?: string;
+  border?: string;
+  height?: string;
+  text: string | ((isActive: boolean, isOpen: boolean, menu: Menu) => string);
+  padding?: string;
+  font?: string;
+}
+
+interface StyleDefinitions {
+  common: string;
+  levels: Record<number, StyleConfig>;
+}

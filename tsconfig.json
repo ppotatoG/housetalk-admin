@@ -25,7 +25,8 @@
     "baseUrl": ".",
     "paths": {
       "@/component/*": ["src/app/component/*"],
-      "@/constants/*": ["src/constants/*"]
+      "@/constants/*": ["src/constants/*"],
+      "@/utils/*": ["src/utils/*"]
     }
   },
   "include": [
