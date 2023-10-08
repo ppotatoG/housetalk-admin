@@ -4,12 +4,13 @@ import { useRouter } from 'next/navigation';
 import React from 'react';
 
 import PageHeader from '@/component/common/header/PageHeader';
-import ReadOnlyText from '@/component/common/input/ReadOnlyText';
+import {
+  ReadOnlyRadio,
+  ReadOnlyText,
+  ReadOnlyEditableText,
+} from '@/component/common/input';
 import { PAGE_HEADERS } from '@/constants/pageHeaders';
 import { DUMMY_USERS } from '@/constants/users';
-
-import ReadOnlyEditableText from '../common/input/ReadOnlyEditableText';
-import ReadOnlyRadio from '../common/input/ReadOnlyRadio';
 
 interface DetailProps {
   params: { [key: string]: string };
