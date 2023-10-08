@@ -15,9 +15,9 @@ const ReadOnlyRadio: React.FC<TextProps> = ({
     <div className="relative border border-gray-200 dark:border-gray-800 flex items-center">
       <div className="bg-gray-200 dark:bg-gray-800 p-3 w-1/3">{labelText}</div>
       <div className="px-3 w-2/3 flex gap-8 items-center">
-        {radioList.map((radio, index) => {
+        {radioList.map(radio => {
           return (
-            <div key={index} className="flex items-center">
+            <div key={radio} className="flex items-center">
               <label
                 className="relative flex cursor-pointer items-center p-3"
                 htmlFor={radio}

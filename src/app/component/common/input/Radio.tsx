@@ -7,7 +7,7 @@ interface TextProps {
   radioList: CheckData[];
 }
 
-const ReadOnlyRadio: React.FC<TextProps> = ({
+const Radio: React.FC<TextProps> = ({
   labelText,
   value,
   setValue,
@@ -17,11 +17,11 @@ const ReadOnlyRadio: React.FC<TextProps> = ({
     <div className="relative border border-gray-200 dark:border-gray-800 flex items-center w-1/2">
       <div className="bg-gray-200 dark:bg-gray-800 p-3 w-1/3">{labelText}</div>
       <div className="px-3 w-2/3 flex gap-8 items-center">
-        {radioList.map((radio, index) => {
+        {radioList.map(radio => {
           return (
             <>
               <label
-                key={index}
+                key={radio.label}
                 className="relative flex items-center cursor-pointer"
                 htmlFor={radio.label}
               >
@@ -60,4 +60,4 @@ const ReadOnlyRadio: React.FC<TextProps> = ({
   );
 };
 
-export default ReadOnlyRadio;
+export default Radio;
