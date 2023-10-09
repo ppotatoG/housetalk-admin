@@ -1,8 +1,9 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import { useRouter } from 'next/navigation';
-import React, { useCallback, useEffect, useState } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 
 import NavigationButton from '@/component/Navigation/NavigationButton';
+import { calculateMenuHeight, isPathInSubMenu } from '@/utils/navigation';
 
 interface NavigationItemProps {
   menu: Menu;
@@ -12,44 +13,42 @@ interface NavigationItemProps {
 const MENU_HEIGHT = 36;
 
 const NavigationItem: React.FC<NavigationItemProps> = ({ menu, level }) => {
-  const [isOpen, setIsOpen] = useState<boolean>(level !== 0);
-  const [menuHeight, setMenuHeight] = useState(0);
-  const hasSubMenu = menu.subMenu && menu.subMenu.length > 0;
   const router = useRouter();
+  const currentPath = usePathname();
+  const subMenus = useMemo(() => menu.subMenu || [], [menu.subMenu]);
+
+  const hasSubMenu = Boolean(menu.subMenu && menu.subMenu.length);
+
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [menuHeight, setMenuHeight] = useState<number>(0);
 
   const dropdownVariants = {
     open: { opacity: 1, height: menuHeight },
     closed: { opacity: 0, height: 0, overflow: 'hidden' },
   };
 
-  const calculateMenuHeight = useCallback((menuList: Menu[]): number => {
-    let totalHeight = 0;
-
-    menuList.forEach(item => {
-      totalHeight += MENU_HEIGHT;
-      if (item.subMenu) {
-        totalHeight += calculateMenuHeight(item.subMenu);
-      }
-    });
-
-    return totalHeight;
-  }, []);
+  useEffect(() => {
+    setMenuHeight(isOpen ? calculateMenuHeight(subMenus, MENU_HEIGHT) : 0);
+  }, [isOpen, subMenus]);
 
   useEffect(() => {
-    if (isOpen) {
-      setMenuHeight(calculateMenuHeight(menu.subMenu || []));
-    } else {
-      setMenuHeight(0);
-    }
-  }, [calculateMenuHeight, isOpen, menu]);
+    const isActivePage = currentPath === menu.path;
+    const isInsideActiveSubMenu = isPathInSubMenu(subMenus, currentPath);
 
-  const handleMenuClick = () => {
+    if (level === 0) {
+      setIsOpen(isActivePage || isInsideActiveSubMenu);
+    } else if (level !== 0 && hasSubMenu) {
+      setIsOpen(true);
+    }
+  }, [currentPath, subMenus, menu, level, hasSubMenu]);
+
+  const handleMenuClick = useCallback(() => {
     if (menu.path) {
       router.push(menu.path);
-    } else if (level === 0) {
-      setIsOpen(!isOpen);
+    } else if (hasSubMenu && level === 0) {
+      setIsOpen(prevIsOpen => !prevIsOpen);
     }
-  };
+  }, [menu.path, hasSubMenu, level, router]);
 
   return (
     <>
@@ -57,7 +56,7 @@ const NavigationItem: React.FC<NavigationItemProps> = ({ menu, level }) => {
         menu={menu}
         level={level}
         isOpen={isOpen}
-        handleMenuClick={handleMenuClick}
+        onClick={handleMenuClick}
       />
       <AnimatePresence>
         {isOpen && hasSubMenu && (
@@ -68,7 +67,7 @@ const NavigationItem: React.FC<NavigationItemProps> = ({ menu, level }) => {
             variants={dropdownVariants}
             style={{ overflow: 'hidden' }}
           >
-            {menu.subMenu.map(subMenu => (
+            {subMenus.map(subMenu => (
               <NavigationItem
                 key={subMenu.id}
                 menu={subMenu}

@@ -21,7 +21,7 @@ interface StyleConfig {
   height?: string;
   text: string | ((isActive: boolean, isOpen: boolean, menu: Menu) => string);
   padding?: string;
-  font?: string;
+  font?: string | ((menu: Menu) => string);
 }
 
 interface StyleDefinitions {

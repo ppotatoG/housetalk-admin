@@ -8,15 +8,13 @@ export const BUTTON_STYLES: StyleDefinitions = {
       height: 'h-14',
       font: 'hover:text-yellow-500',
       text: (isActive, isOpen, menu) =>
-        isActive || (isOpen && !menu.subMenu)
-          ? 'text-yellow-500'
-          : 'text-white',
+        isActive || (isOpen && menu.subMenu) ? 'text-yellow-500' : 'text-white',
     },
     1: {
       background: 'bg-gray-300',
       text: 'text-gray-700',
       padding: 'py-2',
-      font: 'font-semibold',
+      font: menu => (menu.subMenu ? 'font-semibold' : 'hover:text-indigo-700'),
     },
     2: {
       background: 'bg-gray-300',
