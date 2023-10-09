@@ -1,10 +1,11 @@
 import Users from '@/component/Users';
+import { DefaultLayout } from '@/pageLayout';
 
 const Home = () => {
   return (
-    <main>
+    <DefaultLayout>
       <Users />
-    </main>
+    </DefaultLayout>
   );
 };
 

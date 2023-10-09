@@ -1,4 +1,5 @@
 import Detail from '@/component/Users/Detail';
+import { DefaultLayout } from '@/pageLayout';
 
 type PageParams = {
   slug: string;
@@ -6,9 +7,9 @@ type PageParams = {
 
 const Home = ({ params }: { params: PageParams }) => {
   return (
-    <main>
+    <DefaultLayout>
       <Detail params={params} />
-    </main>
+    </DefaultLayout>
   );
 };
 

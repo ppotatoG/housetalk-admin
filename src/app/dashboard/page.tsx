@@ -1,10 +1,11 @@
 import Dashboard from '@/component/Dashboard';
+import { DefaultLayout } from '@/pageLayout';
 
 const Home = () => {
   return (
-    <main>
+    <DefaultLayout>
       <Dashboard />
-    </main>
+    </DefaultLayout>
   );
 };
 
