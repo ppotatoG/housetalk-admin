@@ -14,6 +14,7 @@ interface ButtonProps {
   type?: 'button' | 'submit' | 'reset';
   children?: React.ReactNode;
   size?: ButtonSizes;
+  className?: string;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -25,6 +26,7 @@ const Button: React.FC<ButtonProps> = ({
   type = 'button',
   children,
   size = 'medium',
+  className,
 }) => {
   const baseClasses = [
     padding,
@@ -65,8 +67,8 @@ const Button: React.FC<ButtonProps> = ({
   return (
     <button
       className={`${baseClasses} ${sizeClasses[size]} ${
-        variant === 'filled' ? filledClasses : outlinedClasses
-      }`}
+        className && className
+      } ${variant === 'filled' ? filledClasses : outlinedClasses}`}
       onClick={onClick}
       type={type}
     >
