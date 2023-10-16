@@ -33,7 +33,7 @@ interface Report {
   dateReported: string;
 }
 
-interface searchUser {
+interface SearchUser {
   id: string;
   name: string;
   gender: gender;

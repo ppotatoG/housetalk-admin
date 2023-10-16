@@ -23,7 +23,7 @@ const Users = () => {
     moment().subtract(6, 'months').toDate()
   );
   const [maxValue, setMaxValue] = useState<Date>(new Date());
-  const [users, setUsers] = useState<searchUser[] | null>(null);
+  const [users, setUsers] = useState<SearchUser[] | null>(null);
   const router = useRouter();
 
   const handelSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -42,7 +42,7 @@ const Users = () => {
     console.log(searchTerm, selectedType, minValue, maxValue);
   };
 
-  const onClickViewAction = (row: searchUser) => {
+  const onClickViewAction = (row: SearchUser) => {
     router.push(`users/${row.id}`);
   };
 
