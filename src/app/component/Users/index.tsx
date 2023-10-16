@@ -42,7 +42,7 @@ const Users = () => {
     console.log(searchTerm, selectedType, minValue, maxValue);
   };
 
-  const onClickViewAction = (row: SearchUser) => {
+  const onClickViewAction = (row: Row) => {
     router.push(`users/${row.id}`);
   };
 

@@ -7,8 +7,8 @@ import Pagination from './Pagination';
 
 interface TableProps {
   headers: string[];
-  rows: searchUser[];
-  onClickViewAction?: (row: searchUser) => void;
+  rows: Rows;
+  onClickViewAction?: (row: Row) => void;
   currentPage: number;
   totalPages: number;
   onPageChange: (page: number) => void;
