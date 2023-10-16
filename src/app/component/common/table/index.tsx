@@ -8,12 +8,14 @@ import Pagination from './Pagination';
 interface TableProps {
   headers: string[];
   rows: Rows;
-  onClickViewAction?: (row: Row) => void;
   currentPage: number;
   totalPages: number;
   onPageChange: (page: number) => void;
   maxPagesToShow?: number;
   hiddenColumns?: string[];
+  onClickViewAction?: (row: Row) => void;
+  onClickUpdateAction?: (row: Row) => void;
+  onClickDeleteAction?: (row: Row) => void;
 }
 
 const Table: React.FC<TableProps> = ({
@@ -25,6 +27,8 @@ const Table: React.FC<TableProps> = ({
   maxPagesToShow = TABLE_ROW_LIMIT,
   hiddenColumns = [],
   onClickViewAction,
+  onClickUpdateAction,
+  onClickDeleteAction,
 }) => {
   const startIndex = (currentPage - 1) * maxPagesToShow;
   const endIndex = startIndex + maxPagesToShow;
@@ -89,6 +93,30 @@ const Table: React.FC<TableProps> = ({
                         >
                           보기
                         </Button>
+                      </td>
+                    )}
+                    {(onClickUpdateAction || onClickDeleteAction) && (
+                      <td className="px-6 py-4 gap-2 flex whitespace-nowrap text-sm font-medium">
+                        {onClickUpdateAction && (
+                          <Button
+                            onClick={() => onClickUpdateAction(row)}
+                            type="button"
+                            variant="outlined"
+                            size="small"
+                          >
+                            수정
+                          </Button>
+                        )}
+                        {onClickDeleteAction && (
+                          <Button
+                            onClick={() => onClickDeleteAction(row)}
+                            type="button"
+                            variant="filled"
+                            size="small"
+                          >
+                            삭제
+                          </Button>
+                        )}
                       </td>
                     )}
                   </tr>
