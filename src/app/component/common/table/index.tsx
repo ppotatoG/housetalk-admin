@@ -13,16 +13,18 @@ interface TableProps {
   totalPages: number;
   onPageChange: (page: number) => void;
   maxPagesToShow?: number;
+  hiddenColumns?: string[];
 }
 
 const Table: React.FC<TableProps> = ({
   headers,
   rows,
-  onClickViewAction,
   currentPage,
   totalPages,
   onPageChange,
   maxPagesToShow = TABLE_ROW_LIMIT,
+  hiddenColumns = [],
+  onClickViewAction,
 }) => {
   const startIndex = (currentPage - 1) * maxPagesToShow;
   const endIndex = startIndex + maxPagesToShow;
@@ -67,14 +69,17 @@ const Table: React.FC<TableProps> = ({
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
                       {startIndex + rowIndex + 1}
                     </td>
-                    {Object.values(row).map((cellValue, cellIndex) => (
-                      <td
-                        key={cellIndex}
-                        className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200"
-                      >
-                        {cellValue.toString()}
-                      </td>
-                    ))}
+                    {Object.entries(row).map(([key, value], cellIndex) => {
+                      if (hiddenColumns.includes(key)) return null;
+                      return (
+                        <td
+                          key={cellIndex}
+                          className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200"
+                        >
+                          {value.toString()}
+                        </td>
+                      );
+                    })}
                     {onClickViewAction && (
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                         <Button
