@@ -41,7 +41,7 @@ const Button: React.FC<ButtonProps> = ({
   ].join(' ');
 
   const sizeClasses = {
-    small: 'text-xs',
+    small: 'text-xs !px-2 !py-1',
     medium: '',
     large: 'text-xl',
   };
