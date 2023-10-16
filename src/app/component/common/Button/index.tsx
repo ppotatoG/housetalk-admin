@@ -30,6 +30,7 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
   const baseClasses = [
     padding,
+    className,
     'rounded',
     'focus:outline-none',
     'transition-colors',
@@ -67,8 +68,8 @@ const Button: React.FC<ButtonProps> = ({
   return (
     <button
       className={`${baseClasses} ${sizeClasses[size]} ${
-        className && className
-      } ${variant === 'filled' ? filledClasses : outlinedClasses}`}
+        variant === 'filled' ? filledClasses : outlinedClasses
+      }`}
       onClick={onClick}
       type={type}
     >
