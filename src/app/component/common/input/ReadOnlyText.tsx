@@ -7,6 +7,8 @@ interface TextProps {
   labelText: string;
   handleReset?: () => void;
   handleUseRouter?: () => void;
+  callbackMessage?: string;
+  handleCallback?: () => void;
 }
 
 const ReadOnlyText: React.FC<TextProps> = ({
@@ -14,6 +16,8 @@ const ReadOnlyText: React.FC<TextProps> = ({
   labelText,
   handleReset,
   handleUseRouter,
+  callbackMessage,
+  handleCallback,
 }) => {
   return (
     <div className="relative border border-gray-200 dark:border-gray-800 flex items-center">
@@ -28,6 +32,11 @@ const ReadOnlyText: React.FC<TextProps> = ({
         {handleUseRouter && (
           <Button variant="outlined" onClick={handleUseRouter} size="small">
             상세
+          </Button>
+        )}
+        {callbackMessage && handleCallback && (
+          <Button variant="outlined" onClick={handleCallback} size="small">
+            {callbackMessage}
           </Button>
         )}
       </div>

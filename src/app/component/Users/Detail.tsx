@@ -43,6 +43,10 @@ const Detail: React.FC<DetailProps> = ({ params }) => {
     console.log('handleSave');
   };
 
+  const handleEditLivingInfo = () => {
+    console.log('handleEditLivingInfo');
+  };
+
   return (
     <div>
       <PageHeader title={PAGE_HEADERS.USERS_DETAIL} />
@@ -82,10 +86,11 @@ const Detail: React.FC<DetailProps> = ({ params }) => {
           labelText="주소"
           handleSave={handleSave}
         />
-        <ReadOnlyEditableText
+        <ReadOnlyText
           value={`${livingInfo.duration} / ${livingInfo.type} / ${livingInfo.people}`}
           labelText="자취정보"
-          handleSave={handleSave}
+          callbackMessage="수정"
+          handleCallback={handleEditLivingInfo}
         />
         <ReadOnlyText
           value={`${postHistory.length}회`}
