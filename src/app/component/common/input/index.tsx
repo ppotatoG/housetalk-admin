@@ -1,10 +1,10 @@
 import Radio from './Radio';
 import RangeDate from './RangeDate';
-import ReadOnlyEditableText from './ReadOnlyEditableText';
 import ReadOnlyRadio from './ReadOnlyRadio';
 import ReadOnlyText from './ReadOnlyText';
 import SelectInputCombo from './SelectInputCombo';
 import Text from './Text';
+import ToggleEditableText from './ToggleEditableText';
 
 export {
   Text,
@@ -12,6 +12,6 @@ export {
   SelectInputCombo,
   ReadOnlyRadio,
   ReadOnlyText,
-  ReadOnlyEditableText,
+  ToggleEditableText,
   Radio,
 };

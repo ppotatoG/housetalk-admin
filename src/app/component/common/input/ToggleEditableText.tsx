@@ -10,7 +10,7 @@ interface TextProps {
   handleSave: () => void;
 }
 
-const ReadOnlyEditableText: React.FC<TextProps> = ({
+const ToggleEditableText: React.FC<TextProps> = ({
   value,
   labelText,
   handleSave,
@@ -31,8 +31,8 @@ const ReadOnlyEditableText: React.FC<TextProps> = ({
       <div className="pl-2 pr-3 w-2/3 flex justify-between items-center">
         <label htmlFor={value}>
           <input
-            className={`py-1 pl-1 bg-transparent w-60 ${
-              isEdit && 'bg-indigo-50'
+            className={`py-1 pl-1 w-60 ${
+              isEdit ? 'bg-indigo-50' : 'bg-transparent'
             }`}
             type="text"
             name=""
@@ -41,12 +41,16 @@ const ReadOnlyEditableText: React.FC<TextProps> = ({
             disabled={!isEdit}
           />
         </label>
-        <Button variant="outlined" onClick={handleEdit} size="small">
-          수정
+        <Button
+          variant={isEdit ? 'filled' : 'outlined'}
+          onClick={handleEdit}
+          size="small"
+        >
+          {isEdit ? '수정완료' : '수정'}
         </Button>
       </div>
     </div>
   );
 };
 
-export default ReadOnlyEditableText;
+export default ToggleEditableText;

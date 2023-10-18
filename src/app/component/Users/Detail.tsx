@@ -7,7 +7,7 @@ import PageHeader from '@/component/common/header/PageHeader';
 import {
   ReadOnlyRadio,
   ReadOnlyText,
-  ReadOnlyEditableText,
+  ToggleEditableText,
 } from '@/component/common/input';
 import { PAGE_HEADERS } from '@/constants/pageHeaders';
 import { DUMMY_USERS } from '@/constants/users';
@@ -59,25 +59,25 @@ const Detail: React.FC<DetailProps> = ({ params }) => {
           value={pushNotification ? '수신동의' : '수신거부'}
           labelText="가입방식"
         />
-        <ReadOnlyEditableText
+        <ToggleEditableText
           value={nickname}
           labelText="닉네임"
           handleSave={handleSave}
         />
-        <ReadOnlyEditableText
+        <ToggleEditableText
           value={name}
           labelText="회원명"
           handleSave={handleSave}
         />
         <ReadOnlyText value={birthDate} labelText="생년월일" />
-        <ReadOnlyEditableText
+        <ToggleEditableText
           value={phone}
           labelText="휴대폰번호"
           handleSave={handleSave}
         />
         <ReadOnlyText value={gender} labelText="성별" />
         <ReadOnlyText value={signUpDate} labelText="가입일시" />
-        <ReadOnlyEditableText
+        <ToggleEditableText
           value={address}
           labelText="주소"
           handleSave={handleSave}
