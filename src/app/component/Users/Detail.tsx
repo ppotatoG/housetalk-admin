@@ -18,6 +18,12 @@ interface DetailProps {
 
 const Detail: React.FC<DetailProps> = ({ params }) => {
   const currentUserId = params.id;
+
+  if (!DUMMY_USERS.find(v => v.id === currentUserId)) {
+    // TODO: 잘못된 접근 페이지 생성 및 이동
+    return <div>잘못된 접근입니다.</div>;
+  }
+
   const {
     id,
     signUpMethod,
