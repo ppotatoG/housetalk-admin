@@ -17,6 +17,8 @@ interface DetailProps {
 }
 
 const Detail: React.FC<DetailProps> = ({ params }) => {
+  const router = useRouter();
+
   const currentUserId = params.id;
 
   if (!DUMMY_USERS.find(v => v.id === currentUserId)) {
@@ -39,7 +41,6 @@ const Detail: React.FC<DetailProps> = ({ params }) => {
     postHistory,
     reportHistory,
   } = DUMMY_USERS.filter(v => v.id === currentUserId)[0];
-  const router = useRouter();
 
   const onClickReset = () => {
     console.log('reset');
