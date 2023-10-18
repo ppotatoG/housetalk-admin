@@ -87,6 +87,7 @@ const BannerPage = () => {
           value={exposure}
           setValue={setExposure}
           radioList={EXPOSURE_LIST}
+          required={true}
         />
 
         <Radio
@@ -94,6 +95,7 @@ const BannerPage = () => {
           value={usage}
           setValue={setUsage}
           radioList={USAGE_STATUS}
+          required={true}
         />
 
         <div className="flex justify-end gap-4">

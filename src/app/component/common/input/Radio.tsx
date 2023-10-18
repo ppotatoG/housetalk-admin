@@ -1,10 +1,13 @@
 import React from 'react';
 
+import RequiredMark from '@/component/common/input/RequiredMark';
+
 interface TextProps {
   labelText: string;
   value: CheckData;
   setValue: (value: CheckData) => void;
   radioList: CheckData[];
+  required?: boolean;
 }
 
 const Radio: React.FC<TextProps> = ({
@@ -12,10 +15,14 @@ const Radio: React.FC<TextProps> = ({
   value,
   setValue,
   radioList,
+  required = false,
 }) => {
   return (
     <div className="relative border border-gray-200 dark:border-gray-800 flex items-center w-1/2">
-      <div className="bg-gray-200 dark:bg-gray-800 p-3 w-1/3">{labelText}</div>
+      <div className="bg-gray-200 dark:bg-gray-800 p-3 w-1/3">
+        {labelText}
+        {required && <RequiredMark required={required} />}
+      </div>
       <div className="px-3 w-2/3 flex gap-8 items-center">
         {radioList.map(radio => {
           return (
