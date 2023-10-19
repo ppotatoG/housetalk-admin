@@ -11,6 +11,7 @@ import {
 } from '@/component/common/input';
 import { PAGE_HEADERS } from '@/constants/pageHeaders';
 import { DUMMY_USERS } from '@/constants/users';
+import { InvalidLayout } from '@/pageLayout';
 
 interface DetailProps {
   params: { [key: string]: string };
@@ -22,8 +23,7 @@ const Detail: React.FC<DetailProps> = ({ params }) => {
   const currentUserId = params.id;
 
   if (!DUMMY_USERS.find(v => v.id === currentUserId)) {
-    // TODO: 잘못된 접근 페이지 생성 및 이동
-    return <div>잘못된 접근입니다.</div>;
+    return <InvalidLayout message="해당 사용자를 찾을 수 없습니다." />;
   }
 
   const {

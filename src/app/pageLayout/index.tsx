@@ -1,4 +1,5 @@
 import DefaultLayout from './DefaultLayout';
+import InvalidLayout from './InvalidLayout';
 import LoginLayout from './LoginLayout';
 
-export { LoginLayout, DefaultLayout };
+export { LoginLayout, DefaultLayout, InvalidLayout };
