@@ -4,8 +4,6 @@ import { Calendar } from 'react-calendar';
 import { BsCalendar3 } from 'react-icons/bs';
 import { TbTilde } from 'react-icons/tb';
 
-import 'react-calendar/dist/Calendar.css';
-
 import RequiredMark from './RequiredMark';
 import ToggleDisableButton from './ToggleDisableButton';
 

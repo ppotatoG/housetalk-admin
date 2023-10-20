@@ -1,6 +1,8 @@
 'use client';
 
 import './common.css';
+import 'react-calendar/dist/Calendar.css';
+
 import { Inter } from 'next/font/google';
 import React from 'react';
 
