@@ -62,7 +62,7 @@ const RangeDate: React.FC<RangeDateProps> = ({
 
   return (
     <div
-      className={`relative border border-gray-200 dark:border-gray-800 flex items-center w-1/2 ${
+      className={`border border-gray-200 dark:border-gray-800 flex items-center w-1/2 ${
         className || ''
       }`}
     >
@@ -108,22 +108,22 @@ const RangeDate: React.FC<RangeDateProps> = ({
             handleDisableToggle={handleDisableToggle}
           />
         )}
-      </div>
-      <div className="absolute" style={{ top: '120%' }}>
-        {!disabled && showCalendar === 'min' && (
-          <Calendar
-            locale="ko"
-            onChange={(value: Value) => handleDateChange(value, 'min')}
-            value={minValue}
-          />
-        )}
-        {!disabled && showCalendar === 'max' && (
-          <Calendar
-            locale="ko"
-            onChange={(value: Value) => handleDateChange(value, 'max')}
-            value={maxValue}
-          />
-        )}
+        <div className="absolute z-20" style={{ top: '120%' }}>
+          {!disabled && showCalendar === 'min' && (
+            <Calendar
+              locale="ko"
+              onChange={(value: Value) => handleDateChange(value, 'min')}
+              value={minValue}
+            />
+          )}
+          {!disabled && showCalendar === 'max' && (
+            <Calendar
+              locale="ko"
+              onChange={(value: Value) => handleDateChange(value, 'max')}
+              value={maxValue}
+            />
+          )}
+        </div>
       </div>
     </div>
   );
