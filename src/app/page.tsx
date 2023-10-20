@@ -1,3 +1,8 @@
+'use client';
+
+import { useRouter } from 'next/navigation';
+
 export default function Home() {
-  return <main>/app/page.tsx</main>;
+  const router = useRouter();
+  return router.push('dashboard');
 }
