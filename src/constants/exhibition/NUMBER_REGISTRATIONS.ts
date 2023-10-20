@@ -1,0 +1,1 @@
+export const NUMBER_REGISTRATIONS = 10;
