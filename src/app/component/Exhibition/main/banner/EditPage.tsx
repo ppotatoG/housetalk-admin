@@ -4,7 +4,7 @@ import moment from 'moment/moment';
 import React, { useState } from 'react';
 
 import PageHeader from '@/component/common/header/PageHeader';
-import { Radio, RangeDateAndTime, Text } from '@/component/common/input';
+import { Radio, RangeDate, Text } from '@/component/common/input';
 import {
   EXPOSURE_LIST,
   NUMBER_REGISTRATIONS,
@@ -43,13 +43,16 @@ const EditPage: React.FC<EditPageProps> = ({ type }) => {
       </p>
 
       <form onSubmit={handelSubmit} className="flex flex-col gap-4">
-        <RangeDateAndTime
+        <RangeDate
           minValue={minValue}
           setMinValue={setMinValue}
           maxValue={maxValue}
           setMaxValue={setMaxValue}
-          labelRangeDateAndTime="노출기간"
+          labelRangeDate="노출기간"
           className="w-full"
+          useHour={true}
+          useMinute={true}
+          required={true}
         />
         <Radio
           labelText="노출상태"

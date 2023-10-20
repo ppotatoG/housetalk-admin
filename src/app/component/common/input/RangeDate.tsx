@@ -2,7 +2,8 @@ import moment from 'moment';
 import React, { useState, useEffect } from 'react';
 import { Calendar } from 'react-calendar';
 import { BsCalendar3 } from 'react-icons/bs';
-import { TbTilde } from 'react-icons/tb';
+
+import TimeInput from '@/component/common/input/component/TimeInput';
 
 import RequiredMark from './RequiredMark';
 import ToggleDisableButton from './ToggleDisableButton';
@@ -19,6 +20,9 @@ interface RangeDateProps {
   required?: boolean;
   disabled?: boolean;
   className?: string;
+  useHour?: boolean;
+  useMinute?: boolean;
+  useSecond?: boolean;
 }
 
 type CalendarTypes = 'min' | 'max' | null;
@@ -32,6 +36,9 @@ const RangeDate: React.FC<RangeDateProps> = ({
   required = false,
   disabled = false,
   className,
+  useHour = false,
+  useMinute = false,
+  useSecond = false,
 }) => {
   const [showCalendar, setShowCalendar] = useState<CalendarTypes>(null);
   const [isDisabled, setIsDisabled] = useState(disabled);
@@ -73,33 +80,109 @@ const RangeDate: React.FC<RangeDateProps> = ({
           isDisabled && 'bg-gray-50 text-gray-300'
         }`}
       >
-        <button
-          type="button"
-          className="flex gap-2 items-center"
-          disabled={disabled}
-          onClick={() => {
-            if (!isDisabled) {
-              setShowCalendar(prev => (prev === 'min' ? null : 'min'));
-            }
-          }}
-        >
-          {moment(minValue).format('YYYY-MM-DD')}
-          <BsCalendar3 />
-        </button>
-        <TbTilde />
-        <button
-          type="button"
-          className="flex gap-2 items-center"
-          disabled={disabled}
-          onClick={() => {
-            if (!isDisabled) {
-              setShowCalendar(prev => (prev === 'max' ? null : 'max'));
-            }
-          }}
-        >
-          {moment(maxValue).format('YYYY-MM-DD')}
-          <BsCalendar3 />
-        </button>
+        <div className="flex gap-4">
+          <button
+            type="button"
+            className="flex gap-2 items-center"
+            disabled={disabled}
+            onClick={() => {
+              if (!isDisabled) {
+                setShowCalendar(prev => (prev === 'min' ? null : 'min'));
+              }
+            }}
+          >
+            {moment(minValue).format('YYYY-MM-DD')}
+            <BsCalendar3 />
+          </button>
+          {useHour && (
+            <TimeInput
+              value={minValue.getHours()}
+              label="minValue_hours"
+              timeType="HOUR"
+              setValue={(hour: number) => {
+                const newDate = new Date(minValue);
+                newDate.setHours(hour);
+                setMinValue(newDate);
+              }}
+            />
+          )}
+          {useMinute && (
+            <TimeInput
+              value={minValue.getMinutes()}
+              label="minValue_minutes"
+              timeType="MINUTE"
+              setValue={(hour: number) => {
+                const newDate = new Date(minValue);
+                newDate.setMinutes(hour);
+                setMinValue(newDate);
+              }}
+            />
+          )}
+          {useSecond && (
+            <TimeInput
+              value={minValue.getSeconds()}
+              label="minValue_seconds"
+              timeType="SECOND"
+              setValue={(hour: number) => {
+                const newDate = new Date(minValue);
+                newDate.setMinutes(hour);
+                setMinValue(newDate);
+              }}
+            />
+          )}
+        </div>
+        ~
+        <div className="flex gap-4">
+          <button
+            type="button"
+            className="flex gap-2 items-center"
+            disabled={disabled}
+            onClick={() => {
+              if (!isDisabled) {
+                setShowCalendar(prev => (prev === 'max' ? null : 'max'));
+              }
+            }}
+          >
+            {moment(maxValue).format('YYYY-MM-DD')}
+            <BsCalendar3 />
+          </button>
+          {useHour && (
+            <TimeInput
+              value={maxValue.getHours()}
+              label="maxValue_hours"
+              timeType="HOUR"
+              setValue={(hour: number) => {
+                const newDate = new Date(maxValue);
+                newDate.setHours(hour);
+                setMaxValue(newDate);
+              }}
+            />
+          )}
+          {useMinute && (
+            <TimeInput
+              value={maxValue.getMinutes()}
+              label="maxValue_minutes"
+              timeType="MINUTE"
+              setValue={(hour: number) => {
+                const newDate = new Date(maxValue);
+                newDate.setMinutes(hour);
+                setMaxValue(newDate);
+              }}
+            />
+          )}
+          {useSecond && (
+            <TimeInput
+              value={maxValue.getSeconds()}
+              label="maxValue_seconds"
+              timeType="SECOND"
+              setValue={(hour: number) => {
+                const newDate = new Date(maxValue);
+                newDate.setMinutes(hour);
+                setMaxValue(newDate);
+              }}
+            />
+          )}
+        </div>
         {!required && (
           <ToggleDisableButton
             required={required}
