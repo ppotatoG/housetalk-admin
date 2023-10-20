@@ -8,6 +8,7 @@ interface TextProps {
   setValue: (value: CheckData) => void;
   radioList: CheckData[];
   required?: boolean;
+  className?: string;
 }
 
 const Radio: React.FC<TextProps> = ({
@@ -16,9 +17,14 @@ const Radio: React.FC<TextProps> = ({
   setValue,
   radioList,
   required = false,
+  className,
 }) => {
   return (
-    <div className="relative border border-gray-200 dark:border-gray-800 flex items-center w-1/2">
+    <div
+      className={`relative border border-gray-200 dark:border-gray-800 flex items-center w-1/2 ${
+        className && className
+      }`}
+    >
       <div className="bg-gray-200 dark:bg-gray-800 p-3 w-1/3">
         {labelText}
         {required && <RequiredMark required={required} />}
