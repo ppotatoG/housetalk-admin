@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import React from 'react';
+import React, { useState } from 'react';
 
 import PageHeader from '@/component/common/header/PageHeader';
 import {
@@ -10,21 +10,13 @@ import {
   ToggleEditableText,
 } from '@/component/common/input';
 import { PAGE_HEADERS } from '@/constants/pageHeaders';
-import { DUMMY_USERS } from '@/constants/users';
-import { InvalidLayout } from '@/pageLayout';
 
-interface DetailProps {
-  params: { [key: string]: string };
+interface DetailContentsProps {
+  user: User;
 }
 
-const Detail: React.FC<DetailProps> = ({ params }) => {
+const DetailContents: React.FC<DetailContentsProps> = ({ user }) => {
   const router = useRouter();
-
-  const currentUserId = params.id;
-
-  if (!DUMMY_USERS.find(v => v.id === currentUserId)) {
-    return <InvalidLayout message="해당 사용자를 찾을 수 없습니다." />;
-  }
 
   const {
     id,
@@ -40,7 +32,12 @@ const Detail: React.FC<DetailProps> = ({ params }) => {
     livingInfo,
     postHistory,
     reportHistory,
-  } = DUMMY_USERS.filter(v => v.id === currentUserId)[0];
+  } = user;
+
+  const [nicknameValue, setNicknameValue] = useState<string>(user.nickname);
+  const [addressValue, setAddressValue] = useState<string>(user.address);
+  const [nameValue, setNameValue] = useState<string>(user.name);
+  const [phoneValue, setPhoneValue] = useState<string>(user.phone);
 
   const onClickReset = () => {
     console.log('reset');
@@ -71,17 +68,20 @@ const Detail: React.FC<DetailProps> = ({ params }) => {
           labelText="가입방식"
         />
         <ToggleEditableText
-          value={nickname}
+          id="nickname"
+          value={nicknameValue}
           labelText="닉네임"
           handleSave={handleSave}
         />
         <ToggleEditableText
+          id="name"
           value={name}
           labelText="회원명"
           handleSave={handleSave}
         />
         <ReadOnlyText value={birthDate} labelText="생년월일" />
         <ToggleEditableText
+          id="phone"
           value={phone}
           labelText="휴대폰번호"
           handleSave={handleSave}
@@ -89,6 +89,7 @@ const Detail: React.FC<DetailProps> = ({ params }) => {
         <ReadOnlyText value={gender} labelText="성별" />
         <ReadOnlyText value={signUpDate} labelText="가입일시" />
         <ToggleEditableText
+          id="address"
           value={address}
           labelText="주소"
           handleSave={handleSave}
@@ -102,16 +103,16 @@ const Detail: React.FC<DetailProps> = ({ params }) => {
         <ReadOnlyText
           value={`${postHistory.length}회`}
           labelText="게시물 이력"
-          handleUseRouter={() => router.push(`/users/${currentUserId}/posts`)}
+          handleUseRouter={() => router.push(`/users/${user.id}/posts`)}
         />
         <ReadOnlyText
           value={`${reportHistory.length}회`}
           labelText="신고 이력"
-          handleUseRouter={() => router.push(`/users/${currentUserId}/reports`)}
+          handleUseRouter={() => router.push(`/users/${user.id}/reports`)}
         />
       </div>
     </div>
   );
 };
 
-export default Detail;
+export default DetailContents;

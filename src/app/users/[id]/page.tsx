@@ -1,4 +1,4 @@
-import Detail from '@/component/Users/Detail';
+import DetailGuard from '@/component/Users/DetailGuard';
 import { DefaultLayout } from '@/pageLayout';
 
 type PageParams = {
@@ -8,7 +8,7 @@ type PageParams = {
 const Home = ({ params }: { params: PageParams }) => {
   return (
     <DefaultLayout>
-      <Detail params={params} />
+      <DetailGuard params={params} />
     </DefaultLayout>
   );
 };
