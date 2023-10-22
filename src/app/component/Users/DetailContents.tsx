@@ -34,10 +34,10 @@ const DetailContents: React.FC<DetailContentsProps> = ({ user }) => {
     reportHistory,
   } = user;
 
-  const [nicknameValue, setNicknameValue] = useState<string>(user.nickname);
-  const [addressValue, setAddressValue] = useState<string>(user.address);
-  const [nameValue, setNameValue] = useState<string>(user.name);
-  const [phoneValue, setPhoneValue] = useState<string>(user.phone);
+  const [nicknameValue, setNicknameValue] = useState<string>(nickname);
+  const [addressValue, setAddressValue] = useState<string>(address);
+  const [nameValue, setNameValue] = useState<string>(name);
+  const [phoneValue, setPhoneValue] = useState<string>(phone);
 
   const onClickReset = () => {
     console.log('reset');
@@ -70,19 +70,22 @@ const DetailContents: React.FC<DetailContentsProps> = ({ user }) => {
         <ToggleEditableText
           id="nickname"
           value={nicknameValue}
+          setValue={setNicknameValue}
           labelText="닉네임"
           handleSave={handleSave}
         />
         <ToggleEditableText
           id="name"
-          value={name}
+          value={nameValue}
+          setValue={setNameValue}
           labelText="회원명"
           handleSave={handleSave}
         />
         <ReadOnlyText value={birthDate} labelText="생년월일" />
         <ToggleEditableText
           id="phone"
-          value={phone}
+          value={phoneValue}
+          setValue={setPhoneValue}
           labelText="휴대폰번호"
           handleSave={handleSave}
         />
@@ -90,7 +93,8 @@ const DetailContents: React.FC<DetailContentsProps> = ({ user }) => {
         <ReadOnlyText value={signUpDate} labelText="가입일시" />
         <ToggleEditableText
           id="address"
-          value={address}
+          value={addressValue}
+          setValue={setAddressValue}
           labelText="주소"
           handleSave={handleSave}
         />
