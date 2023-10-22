@@ -40,16 +40,19 @@ const Text: React.FC<TextProps> = ({
 
   return (
     <div
-      className={`relative border border-gray-200 dark:border-gray-800 flex items-center w-1/2 ${
+      className={`h-9 relative border border-gray-200 dark:border-gray-800 flex items-center w-1/2 ${
         className || ''
       }`}
     >
-      <label htmlFor={label} className="bg-gray-200 dark:bg-gray-800 p-2 w-1/3">
+      <label
+        htmlFor={label}
+        className="h-full leading-9 bg-gray-200 dark:bg-gray-800 px-2 w-1/3"
+      >
         {labelText}
         {required && <RequiredMark required={required} />}
       </label>
       <input
-        className={`p-2 w-2/3 pr-8 ${
+        className={`h-full leading-9 px-2 w-2/3 pr-8 ${
           isDisabled ? 'bg-gray-50 text-gray-300' : ''
         }`}
         type={type || 'text'}

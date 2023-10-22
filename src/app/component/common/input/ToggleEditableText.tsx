@@ -26,12 +26,14 @@ const ToggleEditableText: React.FC<TextProps> = ({
   };
 
   return (
-    <div className="relative border border-gray-200 dark:border-gray-800 flex items-center">
-      <div className="bg-gray-200 dark:bg-gray-800 p-3 w-1/3">{labelText}</div>
-      <div className="pl-2 pr-3 w-2/3 flex justify-between items-center">
-        <label htmlFor={value}>
+    <div className="h-9 relative border border-gray-200 dark:border-gray-800 flex items-center">
+      <div className="h-full leading-9 bg-gray-200 dark:bg-gray-800 px-2 w-1/3">
+        {labelText}
+      </div>
+      <div className="h-full leading-9 px-2 w-2/3 flex justify-between items-center">
+        <label htmlFor={value} className="h-full py-1">
           <input
-            className={`py-1 pl-1 w-60 ${
+            className={`w-60 block h-full ${
               isEdit ? 'bg-indigo-50' : 'bg-transparent'
             }`}
             type="text"

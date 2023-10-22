@@ -20,9 +20,11 @@ const ReadOnlyText: React.FC<TextProps> = ({
   handleCallback,
 }) => {
   return (
-    <div className="relative border border-gray-200 dark:border-gray-800 flex items-center">
-      <div className="bg-gray-200 dark:bg-gray-800 p-3 w-1/3">{labelText}</div>
-      <div className="px-3 w-2/3 flex justify-between items-center">
+    <div className="h-9 relative border border-gray-200 dark:border-gray-800 flex items-center">
+      <div className="bg-gray-200 dark:bg-gray-800 h-full leading-9 px-2 w-1/3">
+        {labelText}
+      </div>
+      <div className="h-full leading-9 px-2 w-2/3 flex justify-between items-center">
         {value}
         {handleReset && (
           <Button variant="outlined" onClick={handleReset} size="small">

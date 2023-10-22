@@ -43,68 +43,64 @@ const SelectInputCombo: React.FC<SelectInputComboProps> = ({
   };
 
   return (
-    <div className="flex items-center w-full">
-      <div className="border border-gray-200 dark:border-gray-800 flex items-center w-1/2">
-        <div className="relative w-1/3">
-          <button
-            className="relative bg-gray-200 dark:bg-gray-800 p-2 w-full text-left"
-            type="button"
-            onClick={() => setIsOpen(!isOpen)}
-            disabled={isDisabled}
-          >
-            {selectedOption.name}
-            {required && <RequiredMark required={required} />}
-            <IoIosArrowUp
-              className={`absolute top-1/2 right-2 transform -translate-y-1/2 transition-transform duration-200 ${
-                !isOpen ? 'transform rotate-180' : ''
-              }`}
-            />
-          </button>
+    <div className="flex items-center h-9 border border-gray-200 dark:border-gray-800 w-1/2">
+      <div className="h-full leading-9 relative w-1/3">
+        <button
+          className="relative bg-gray-200 dark:bg-gray-800 px-2 h-full w-full text-left"
+          type="button"
+          onClick={() => setIsOpen(!isOpen)}
+          disabled={isDisabled}
+        >
+          {selectedOption.name}
+          {required && <RequiredMark required={required} />}
+          <IoIosArrowUp
+            className={`absolute top-1/2 right-2 transform -translate-y-1/2 transition-transform duration-200 ${
+              !isOpen ? 'transform rotate-180' : ''
+            }`}
+          />
+        </button>
 
-          {isOpen && !isDisabled && (
-            <div className="absolute mt-1 z-10 w-full origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none transition-transform transform duration-100 ease-out">
-              <div className="py-1">
-                {typeOptions.map(option => (
-                  <button
-                    key={option.id}
-                    className={`text-gray-700 block w-full px-4 py-2 text-left text-sm hover:bg-gray-50 ${
-                      option.id === selectedOption.id ? 'font-bold' : ''
-                    }`}
-                    onClick={() => {
-                      setTypeOption(option);
-                      setIsOpen(false);
-                    }}
-                  >
-                    {option.name}
-                  </button>
-                ))}
-              </div>
+        {isOpen && !isDisabled && (
+          <div className="absolute mt-1 z-10 w-full origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none transition-transform transform duration-100 ease-out">
+            <div className="py-1">
+              {typeOptions.map(option => (
+                <button
+                  key={option.id}
+                  className={`text-gray-700 block w-full px-4 py-2 text-left text-sm hover:bg-gray-50 ${
+                    option.id === selectedOption.id ? 'font-bold' : ''
+                  }`}
+                  onClick={() => {
+                    setTypeOption(option);
+                    setIsOpen(false);
+                  }}
+                >
+                  {option.name}
+                </button>
+              ))}
             </div>
-          )}
-        </div>
-        <div className="flex flex-grow items-center relative">
-          <label htmlFor={label} className="w-full">
-            <input
-              className={`p-2 w-full ${
-                isDisabled ? 'bg-gray-50 text-gray-300' : ''
-              }`}
-              type="text"
-              id={label}
-              value={searchTerm}
-              placeholder={placeholder || undefined}
-              onChange={e => setSearchTerm(e.target.value)}
-              disabled={isDisabled}
-              required={required}
-            />
-          </label>
-          {!required && (
-            <ToggleDisableButton
-              required={required}
-              handleDisableToggle={handleDisableToggle}
-            />
-          )}
-        </div>
+          </div>
+        )}
       </div>
+      <label htmlFor={label} className="w-2/3 h-full">
+        <input
+          className={`block w-full h-full leading-8 px-2 ${
+            isDisabled ? 'bg-gray-50 text-gray-300' : ''
+          }`}
+          type="text"
+          id={label}
+          value={searchTerm}
+          placeholder={placeholder || undefined}
+          onChange={e => setSearchTerm(e.target.value)}
+          disabled={isDisabled}
+          required={required}
+        />
+      </label>
+      {!required && (
+        <ToggleDisableButton
+          required={required}
+          handleDisableToggle={handleDisableToggle}
+        />
+      )}
     </div>
   );
 };

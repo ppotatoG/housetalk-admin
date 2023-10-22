@@ -63,20 +63,21 @@ const RangeDate: React.FC<RangeDateProps> = ({
 
   const handleDisableToggle = () => {
     setIsDisabled(!isDisabled);
+    setShowCalendar(null);
   };
 
   return (
     <div
-      className={`border border-gray-200 dark:border-gray-800 flex items-center w-1/2 ${
+      className={`h-9 border border-gray-200 dark:border-gray-800 flex items-center w-1/2 ${
         className || ''
       }`}
     >
-      <div className="bg-gray-200 dark:bg-gray-800 p-2 w-1/3">
+      <div className="bg-gray-200 h-full leading-9 dark:bg-gray-800 px-2 w-1/3">
         {labelRangeDate}
         {required && <RequiredMark required={required} />}
       </div>
       <div
-        className={`p-2 flex gap-4 items-center w-2/3 relative ${
+        className={`px-2 h-full flex gap-4 items-center w-2/3 relative ${
           isDisabled && 'bg-gray-50 text-gray-300'
         }`}
       >

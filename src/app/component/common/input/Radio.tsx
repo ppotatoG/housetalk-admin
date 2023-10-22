@@ -21,15 +21,15 @@ const Radio: React.FC<TextProps> = ({
 }) => {
   return (
     <div
-      className={`relative border border-gray-200 dark:border-gray-800 flex items-center w-1/2 ${
+      className={`h-9 relative border border-gray-200 dark:border-gray-800 flex items-center w-1/2 ${
         className && className
       }`}
     >
-      <div className="bg-gray-200 dark:bg-gray-800 p-3 w-1/3">
+      <div className="bg-gray-200 dark:bg-gray-800 h-full leading-9 line-clamp-1 w-1/3 px-2">
         {labelText}
         {required && <RequiredMark required={required} />}
       </div>
-      <div className="px-3 w-2/3 flex gap-8 items-center">
+      <div className="px-2 w-2/3 flex gap-8 items-center">
         {radioList.map(radio => {
           return (
             <label
@@ -42,18 +42,18 @@ const Radio: React.FC<TextProps> = ({
                 name="type"
                 type="radio"
                 onChange={() => setValue(radio)}
-                className="appearance-none rounded-full h-5 w-5 border border-indigo-950"
+                className="appearance-none rounded-full h-3 w-3 border border-indigo-950"
               />
               <span
                 className={
                   value.id === radio.id
-                    ? 'absolute left-1 flex items-center'
+                    ? 'absolute h-3 w-3 flex justify-center items-center'
                     : 'hidden'
                 }
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-3 w-3"
+                  className="h-2 w-2"
                   viewBox="0 0 16 16"
                   fill="#1d1b4b"
                 >
