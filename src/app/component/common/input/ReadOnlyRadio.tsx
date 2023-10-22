@@ -28,6 +28,7 @@ const ReadOnlyRadio: React.FC<TextProps> = ({
                 id={radio}
                 name="type"
                 type="radio"
+                readOnly
                 checked={value === radio}
                 className={`appearance-none rounded-full h-3 w-3 border ${
                   value === radio ? 'border-indigo-950' : 'border-gray-300'
