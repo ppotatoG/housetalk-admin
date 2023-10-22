@@ -2,6 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
+import { toast } from 'react-toastify';
 
 import PageHeader from '@/component/common/header/PageHeader';
 import {
@@ -9,7 +10,7 @@ import {
   ReadOnlyText,
   ToggleEditableText,
 } from '@/component/common/input';
-import { PAGE_HEADERS } from '@/constants';
+import { PAGE_HEADERS, USERS_MESSAGE } from '@/constants';
 
 interface DetailContentsProps {
   user: User;
@@ -40,11 +41,21 @@ const DetailContents: React.FC<DetailContentsProps> = ({ user }) => {
   const [phoneValue, setPhoneValue] = useState<string>(phone);
 
   const onClickReset = () => {
-    console.log('reset');
+    toast(USERS_MESSAGE.DETAIL.PASSWORD_RESET_SUCCESS, {
+      hideProgressBar: true,
+      autoClose: 2000,
+      type: 'success',
+      position: 'top-right',
+    });
   };
 
   const handleSave = () => {
-    console.log('handleSave');
+    toast(USERS_MESSAGE.DETAIL.EDIT_SUCCESS, {
+      hideProgressBar: true,
+      autoClose: 2000,
+      type: 'success',
+      position: 'top-right',
+    });
   };
 
   const handleEditLivingInfo = () => {

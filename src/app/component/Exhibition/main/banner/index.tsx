@@ -3,12 +3,14 @@
 import moment from 'moment/moment';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
+import { toast } from 'react-toastify';
 
 import Button from '@/component/common/Button';
 import PageHeader from '@/component/common/header/PageHeader';
 import { RangeDate, Radio } from '@/component/common/input';
 import Table from '@/component/common/table';
 import {
+  USERS_MESSAGE,
   EXHIBITION_TABLE_HEADER,
   DUMMY_EXHIBITION,
   USAGE_STATUS,
@@ -45,6 +47,13 @@ const BannerPage = () => {
         };
       })
     );
+
+    toast(USERS_MESSAGE.DETAIL.PASSWORD_RESET_SUCCESS, {
+      hideProgressBar: true,
+      autoClose: 2000,
+      type: 'success',
+      position: 'top-right',
+    });
 
     console.log(minValue, maxValue);
   };

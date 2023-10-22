@@ -3,6 +3,7 @@
 import moment from 'moment';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
+import { toast } from 'react-toastify';
 
 import Button from '@/component/common/Button';
 import PageHeader from '@/component/common/header/PageHeader';
@@ -10,6 +11,7 @@ import { SelectInputCombo, RangeDate } from '@/component/common/input';
 import Table from '@/component/common/table';
 import {
   PAGE_HEADERS,
+  USERS_MESSAGE,
   TABLE_ROW_LIMIT,
   SEARCH_USERS_TYPE,
   DUMMY_USERS,
@@ -38,6 +40,13 @@ const Users = () => {
         signUpDate: user.signUpDate,
       }))
     );
+
+    toast(USERS_MESSAGE.SEARCH.SUCCESS, {
+      hideProgressBar: true,
+      autoClose: 2000,
+      type: 'success',
+      position: 'top-right',
+    });
 
     console.log(searchTerm, selectedType, minValue, maxValue);
   };
