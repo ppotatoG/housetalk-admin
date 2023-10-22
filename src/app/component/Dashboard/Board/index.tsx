@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { BOARD_TITLE, DASHBOARD_TITLES } from '@/constants/dashboard';
+import { BOARD_TITLE, DASHBOARD_TITLES } from '@/constants';
 
 import Item from './Item';
 

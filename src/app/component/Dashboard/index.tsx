@@ -11,7 +11,7 @@ import {
   DUMMY_FREE_BOARD_POSTS,
   DUMMY_RECOMMEND_ITEM_POSTS,
   DUMMY_HOUSE_REVIEW_POSTS,
-} from '@/constants/dashboard/DUMMY';
+} from '@/constants';
 
 const Dashboard = () => {
   const now = new Date();

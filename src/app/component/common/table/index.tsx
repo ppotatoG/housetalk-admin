@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Button from '@/component/common/Button';
-import { TABLE_ROW_LIMIT } from '@/constants/TABLE_ROW_LIMIT';
+import { TABLE_ROW_LIMIT } from '@/constants';
 
 import Pagination from './Pagination';
 

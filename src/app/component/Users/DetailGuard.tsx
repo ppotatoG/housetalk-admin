@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { DUMMY_USERS } from '@/constants/users';
+import { DUMMY_USERS } from '@/constants';
 import { InvalidLayout } from '@/pageLayout';
 
 import DetailContents from './DetailContents';

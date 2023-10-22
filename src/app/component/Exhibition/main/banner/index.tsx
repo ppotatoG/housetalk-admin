@@ -13,9 +13,9 @@ import {
   DUMMY_EXHIBITION,
   USAGE_STATUS,
   EXPOSURE_LIST,
-} from '@/constants/exhibition';
-import { PAGE_HEADERS } from '@/constants/pageHeaders';
-import { TABLE_ROW_LIMIT } from '@/constants/TABLE_ROW_LIMIT';
+  PAGE_HEADERS,
+  TABLE_ROW_LIMIT,
+} from '@/constants';
 
 const BannerPage = () => {
   const [minValue, setMinValue] = useState<Date>(

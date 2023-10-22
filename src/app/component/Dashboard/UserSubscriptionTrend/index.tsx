@@ -10,11 +10,7 @@ import {
 } from 'chart.js';
 import React from 'react';
 
-import {
-  CHART_COLORS,
-  BAR_CHART_OPTIONS,
-  DASHBOARD_TITLES,
-} from '@/constants/dashboard';
+import { CHART_COLORS, BAR_CHART_OPTIONS, DASHBOARD_TITLES } from '@/constants';
 
 import Chart from './Chart';
 

@@ -27,6 +27,7 @@
       "@/pageLayout": ["src/app/pageLayout/index.tsx"],
       "@/component/*": ["src/app/component/*"],
       "@/constants/*": ["src/constants/*"],
+      "@/constants": ["src/constants/index.ts"],
       "@/utils/*": ["src/utils/*"]
     }
   },

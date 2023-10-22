@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import React, { useState, useEffect } from 'react';
 
 import Button from '@/component/common/Button';
-import { totalTicks, H_VH_MINUS_HEADER } from '@/constants/layout';
+import { TOTAL_TICKS, H_VH_MINUS_HEADER } from '@/constants';
 
 export default function InvalidLayout({
   message,
@@ -16,7 +16,7 @@ export default function InvalidLayout({
   useHeader?: boolean;
 }) {
   const router = useRouter();
-  const [ticksLeft, setTicksLeft] = useState<number>(totalTicks);
+  const [ticksLeft, setTicksLeft] = useState<number>(TOTAL_TICKS);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -29,7 +29,7 @@ export default function InvalidLayout({
     return () => clearInterval(interval);
   }, [ticksLeft, router]);
 
-  const progressBarWidth = ((totalTicks - ticksLeft) / totalTicks) * 100;
+  const progressBarWidth = ((TOTAL_TICKS - ticksLeft) / TOTAL_TICKS) * 100;
 
   return (
     <section className="bg-white dark:bg-gray-900">

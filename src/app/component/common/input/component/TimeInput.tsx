@@ -1,7 +1,7 @@
 import React from 'react';
 import { TiDelete } from 'react-icons/ti';
 
-import { TIME_TYPE_STRING } from '@/constants/input';
+import { TIME_TYPE_STRING } from '@/constants';
 interface TimeInputProps {
   label: string;
   value: number;

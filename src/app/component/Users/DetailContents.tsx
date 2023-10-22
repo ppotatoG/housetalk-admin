@@ -9,7 +9,7 @@ import {
   ReadOnlyText,
   ToggleEditableText,
 } from '@/component/common/input';
-import { PAGE_HEADERS } from '@/constants/pageHeaders';
+import { PAGE_HEADERS } from '@/constants';
 
 interface DetailContentsProps {
   user: User;

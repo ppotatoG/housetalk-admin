@@ -15,7 +15,7 @@ import {
   CHART_COLORS,
   DASHBOARD_TITLES,
   DOUGHNUT_CHART_OPTIONS,
-} from '@/constants/dashboard';
+} from '@/constants';
 
 import Chart from './Chart';
 

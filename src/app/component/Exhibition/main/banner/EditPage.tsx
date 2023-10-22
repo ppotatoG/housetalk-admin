@@ -9,8 +9,8 @@ import {
   EXPOSURE_LIST,
   NUMBER_REGISTRATIONS,
   USAGE_STATUS,
-} from '@/constants/exhibition';
-import { PAGE_HEADERS } from '@/constants/pageHeaders';
+  PAGE_HEADERS,
+} from '@/constants';
 
 interface EditPageProps {
   type: string;

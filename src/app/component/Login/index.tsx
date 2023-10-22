@@ -3,7 +3,7 @@
 import { useState } from 'react';
 
 import Button from '@/component/common/Button';
-import { LOGIN } from '@/constants/login';
+import { LOGIN } from '@/constants';
 const Login = () => {
   const {
     ID,

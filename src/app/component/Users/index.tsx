@@ -8,13 +8,13 @@ import Button from '@/component/common/Button';
 import PageHeader from '@/component/common/header/PageHeader';
 import { SelectInputCombo, RangeDate } from '@/component/common/input';
 import Table from '@/component/common/table';
-import { PAGE_HEADERS } from '@/constants/pageHeaders';
-import { TABLE_ROW_LIMIT } from '@/constants/TABLE_ROW_LIMIT';
 import {
+  PAGE_HEADERS,
+  TABLE_ROW_LIMIT,
   SEARCH_USERS_TYPE,
   DUMMY_USERS,
   USERS_TABLE_HEADER,
-} from '@/constants/users';
+} from '@/constants';
 
 const Users = () => {
   const [searchTerm, setSearchTerm] = useState('');
