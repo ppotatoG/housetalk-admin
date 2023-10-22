@@ -7,6 +7,7 @@ import Button from '@/component/common/Button';
 interface TextProps {
   id: string;
   value: string;
+  setValue: (value: string) => void;
   labelText: string;
   handleSave: () => void;
 }
@@ -14,6 +15,7 @@ interface TextProps {
 const ToggleEditableText: React.FC<TextProps> = ({
   id,
   value,
+  setValue,
   labelText,
   handleSave,
 }) => {
@@ -53,7 +55,7 @@ const ToggleEditableText: React.FC<TextProps> = ({
             disabled={!isEdit}
             ref={inputRef}
             onChange={e => {
-              value = e.target.value;
+              setValue(e.target.value);
             }}
           />
         </label>
