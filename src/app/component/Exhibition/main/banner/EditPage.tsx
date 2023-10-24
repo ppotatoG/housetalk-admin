@@ -1,7 +1,7 @@
 'use client';
 
 import moment from 'moment/moment';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import PageHeader from '@/component/common/header/PageHeader';
 import { Radio, RangeDate, Text } from '@/component/common/input';
@@ -14,9 +14,10 @@ import {
 
 interface EditPageProps {
   type: string;
+  updateValue?: Exhibition;
 }
 
-const EditPage: React.FC<EditPageProps> = ({ type }) => {
+const EditPage: React.FC<EditPageProps> = ({ type, updateValue }) => {
   const typeText = type === 'create' ? '등록' : '수정';
 
   const [minValue, setMinValue] = useState<Date>(
@@ -24,12 +25,35 @@ const EditPage: React.FC<EditPageProps> = ({ type }) => {
   );
   const [maxValue, setMaxValue] = useState<Date>(new Date());
 
-  const [exposure, setExposure] = useState<CheckData>(EXPOSURE_LIST[0]);
-  const [usage, setUsage] = useState<CheckData>(USAGE_STATUS[0]);
-  const [landingUrl, setLandingUrl] = useState<string>('');
+  const [exposure, setExposure] = useState<CheckData>(EXPOSURE_LIST[1]);
+  const [usage, setUsage] = useState<CheckData>(USAGE_STATUS[1]);
+  const [landingUrlValue, setLandingUrl] = useState<string>('');
   const [imageUrl, setImageUrl] = useState<string>('');
   const [title, setTitle] = useState<string>('');
   const [description, setDescription] = useState<string>('');
+
+  useEffect(() => {
+    if (updateValue) {
+      const {
+        displayStartDate,
+        displayEndDate,
+        isPublished,
+        isUsed,
+        landingUrl,
+        imageUrl,
+        title,
+        description,
+      } = updateValue;
+      setMinValue(new Date(displayStartDate));
+      setMaxValue(new Date(displayEndDate));
+      setUsage(isUsed ? USAGE_STATUS[1] : USAGE_STATUS[2]);
+      setExposure(isPublished ? EXPOSURE_LIST[1] : EXPOSURE_LIST[2]);
+      setLandingUrl(landingUrl);
+      setImageUrl(imageUrl);
+      setTitle(title);
+      setDescription(description);
+    }
+  }, [updateValue]);
 
   const handelSubmit = () => {};
   return (
@@ -58,7 +82,7 @@ const EditPage: React.FC<EditPageProps> = ({ type }) => {
           labelText="노출상태"
           value={exposure}
           setValue={setExposure}
-          radioList={EXPOSURE_LIST}
+          radioList={EXPOSURE_LIST.slice(1)}
           required={true}
           className="w-full"
         />
@@ -66,13 +90,13 @@ const EditPage: React.FC<EditPageProps> = ({ type }) => {
           labelText="사용여부"
           value={usage}
           setValue={setUsage}
-          radioList={USAGE_STATUS}
+          radioList={USAGE_STATUS.slice(1)}
           required={true}
           className="w-full"
         />
         <Text
           labelText="랜딩 URL"
-          value={landingUrl}
+          value={landingUrlValue}
           label="landingUrl"
           setValue={setLandingUrl}
           placeholder="랜딩될 URL을 입력해주세요."
