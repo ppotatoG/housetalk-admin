@@ -11,6 +11,7 @@ export const DUMMY_EXHIBITION: Exhibition[] = [
     createdBy: 'admin1',
     createdDate: '2023-10-16',
     lastModifiedBy: 'admin1',
+    landingUrl: 'https://example.com/details/exhibition1',
   },
   {
     id: 'exhibition2',
@@ -24,6 +25,7 @@ export const DUMMY_EXHIBITION: Exhibition[] = [
     createdBy: 'admin1',
     createdDate: '2023-10-16',
     lastModifiedBy: '',
+    landingUrl: 'https://example.com/details/exhibition2',
   },
   {
     id: 'exhibition3',
@@ -37,6 +39,7 @@ export const DUMMY_EXHIBITION: Exhibition[] = [
     createdBy: 'admin2',
     createdDate: '2023-10-16',
     lastModifiedBy: '',
+    landingUrl: 'https://example.com/details/exhibition3',
   },
   {
     id: 'exhibition4',
@@ -50,6 +53,7 @@ export const DUMMY_EXHIBITION: Exhibition[] = [
     createdBy: 'admin2',
     createdDate: '2023-10-16',
     lastModifiedBy: 'admin2',
+    landingUrl: 'https://example.com/details/exhibition4',
   },
   {
     id: 'exhibition5',
@@ -63,6 +67,7 @@ export const DUMMY_EXHIBITION: Exhibition[] = [
     createdBy: 'admin3',
     createdDate: '2023-10-16',
     lastModifiedBy: '',
+    landingUrl: 'https://example.com/details/exhibition5',
   },
   {
     id: 'exhibition6',
@@ -76,6 +81,7 @@ export const DUMMY_EXHIBITION: Exhibition[] = [
     createdBy: 'admin4',
     createdDate: '2023-10-16',
     lastModifiedBy: 'admin4',
+    landingUrl: 'https://example.com/details/exhibition6',
   },
   {
     id: 'exhibition7',
@@ -89,6 +95,7 @@ export const DUMMY_EXHIBITION: Exhibition[] = [
     createdBy: 'admin5',
     createdDate: '2023-10-16',
     lastModifiedBy: '',
+    landingUrl: 'https://example.com/details/exhibition7',
   },
   {
     id: 'exhibition8',
@@ -102,6 +109,7 @@ export const DUMMY_EXHIBITION: Exhibition[] = [
     createdBy: 'admin6',
     createdDate: '2023-10-16',
     lastModifiedBy: 'admin6',
+    landingUrl: 'https://example.com/details/exhibition8',
   },
   {
     id: 'exhibition9',
@@ -115,6 +123,7 @@ export const DUMMY_EXHIBITION: Exhibition[] = [
     createdBy: 'admin7',
     createdDate: '2023-10-16',
     lastModifiedBy: '',
+    landingUrl: 'https://example.com/details/exhibition9',
   },
   {
     id: 'exhibition10',
@@ -128,5 +137,6 @@ export const DUMMY_EXHIBITION: Exhibition[] = [
     createdBy: 'admin8',
     createdDate: '2023-10-16',
     lastModifiedBy: '',
+    landingUrl: 'https://example.com/details/exhibition10',
   },
 ];

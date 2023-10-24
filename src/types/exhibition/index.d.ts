@@ -10,6 +10,7 @@ interface Exhibition {
   createdBy: string;
   createdDate: string;
   lastModifiedBy: string;
+  landingUrl: string;
 }
 
 interface SearchExhibition {
