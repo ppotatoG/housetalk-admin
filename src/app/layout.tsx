@@ -8,6 +8,8 @@ import { Inter } from 'next/font/google';
 import React from 'react';
 import { ToastContainer } from 'react-toastify';
 
+import { Providers } from './provider';
+
 const inter = Inter({ subsets: ['latin'] });
 
 export default function RootLayout({
@@ -18,8 +20,10 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className={inter.className} suppressHydrationWarning={true}>
-        {children}
-        <ToastContainer />
+        <Providers>
+          {children}
+          <ToastContainer />
+        </Providers>
       </body>
     </html>
   );

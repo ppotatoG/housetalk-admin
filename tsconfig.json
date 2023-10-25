@@ -28,7 +28,9 @@
       "@/component/*": ["src/app/component/*"],
       "@/constants/*": ["src/constants/*"],
       "@/constants": ["src/constants/index.ts"],
-      "@/utils/*": ["src/utils/*"]
+      "@/utils/*": ["src/utils/*"],
+      "@/slices/*": ["src/slices/*"],
+      "@/store": ["src/store"]
     }
   },
   "include": [
