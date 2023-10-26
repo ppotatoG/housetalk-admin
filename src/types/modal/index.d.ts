@@ -6,6 +6,7 @@ interface ModalState {
   callbackButton?: {
     text: string;
     onClick: () => void;
+    color?: ButtonColors;
   };
 }
 

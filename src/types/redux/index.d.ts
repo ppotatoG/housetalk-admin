@@ -1,0 +1,3 @@
+interface RootStateType {
+  modal: ModalState[];
+}
