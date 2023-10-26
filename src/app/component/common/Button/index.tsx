@@ -2,9 +2,6 @@ import React from 'react';
 
 import { COLOR_CLASSES } from '@/constants';
 
-type ButtonColors = 'default' | 'error' | 'warning';
-type ButtonSizes = 'small' | 'medium' | 'large';
-
 interface ButtonProps {
   variant: 'filled' | 'outlined';
   color?: ButtonColors;
