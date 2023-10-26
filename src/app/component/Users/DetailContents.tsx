@@ -2,6 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 
 import PageHeader from '@/component/common/header/PageHeader';
@@ -11,6 +12,7 @@ import {
   ToggleEditableText,
 } from '@/component/common/input';
 import { PAGE_HEADERS, USERS_MESSAGE } from '@/constants';
+import { showModal } from '@/slices/modalSlice';
 
 interface DetailContentsProps {
   user: User;
@@ -18,6 +20,7 @@ interface DetailContentsProps {
 
 const DetailContents: React.FC<DetailContentsProps> = ({ user }) => {
   const router = useRouter();
+  const dispatch = useDispatch();
 
   const {
     id,
@@ -40,13 +43,26 @@ const DetailContents: React.FC<DetailContentsProps> = ({ user }) => {
   const [nameValue, setNameValue] = useState<string>(name);
   const [phoneValue, setPhoneValue] = useState<string>(phone);
 
-  const onClickReset = () => {
-    toast(USERS_MESSAGE.DETAIL.PASSWORD_RESET_SUCCESS, {
-      hideProgressBar: true,
-      autoClose: 2000,
-      type: 'success',
-      position: 'top-right',
-    });
+  const onClickReset = async () => {
+    dispatch(
+      showModal({
+        id: 'reset_password',
+        title: '비밀번호 초기화',
+        description: '비밀번호를 초기화 하시겠습니까?',
+        type: 'info',
+        callbackButton: {
+          text: '초기화',
+          onClick: () => {
+            toast(USERS_MESSAGE.DETAIL.PASSWORD_RESET_SUCCESS, {
+              hideProgressBar: true,
+              autoClose: 2000,
+              type: 'success',
+              position: 'top-right',
+            });
+          },
+        },
+      })
+    );
   };
 
   const handleSave = () => {
