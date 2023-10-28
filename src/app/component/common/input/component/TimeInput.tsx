@@ -47,7 +47,7 @@ const TimeInput: React.FC<TimeInputProps> = ({
           <TiDelete />
         </button>
       </label>
-      <p className="border-l border-gray-200 bg-gray-50 text-gray-300 text-xs px-2">
+      <p className="border-l border-gray-200 bg-gray-50 text-gray-300 text-xs px-2 flex items-center">
         {TIME_TYPE_STRING[timeType]}
       </p>
     </div>

@@ -23,6 +23,8 @@ interface RangeDateProps {
   useHour?: boolean;
   useMinute?: boolean;
   useSecond?: boolean;
+  height?: number;
+  titleWidthClass?: string;
 }
 
 type CalendarTypes = 'min' | 'max' | null;
@@ -39,6 +41,8 @@ const RangeDate: React.FC<RangeDateProps> = ({
   useHour = false,
   useMinute = false,
   useSecond = false,
+  height = 9,
+  titleWidthClass,
 }) => {
   const [showCalendar, setShowCalendar] = useState<CalendarTypes>(null);
   const [isDisabled, setIsDisabled] = useState(disabled);
@@ -68,18 +72,22 @@ const RangeDate: React.FC<RangeDateProps> = ({
 
   return (
     <div
-      className={`h-9 border border-gray-200 dark:border-gray-800 flex items-center w-1/2 ${
+      className={`border border-gray-200 dark:border-gray-800 flex items-center w-1/2 ${
         className || ''
-      }`}
+      } ${height && `h-${height}`}`}
     >
-      <div className="bg-gray-200 h-full leading-9 dark:bg-gray-800 px-2 w-1/3">
+      <div
+        className={`bg-gray-200 flex items-center h-full dark:bg-gray-800 px-2 ${
+          titleWidthClass ? titleWidthClass : 'w-1/3'
+        }`}
+      >
         {labelRangeDate}
         {required && <RequiredMark required={required} />}
       </div>
       <div
-        className={`px-2 h-full flex gap-4 items-center w-2/3 relative ${
+        className={`px-2 h-full flex gap-4 items-center relative ${
           isDisabled && 'bg-gray-50 text-gray-300'
-        }`}
+        } ${titleWidthClass ? 'w-full' : 'w-2/3'}`}
       >
         <div className="flex gap-4">
           <button

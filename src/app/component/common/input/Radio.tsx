@@ -9,6 +9,8 @@ interface TextProps {
   radioList: CheckData[];
   required?: boolean;
   className?: string;
+  height?: number;
+  titleWidthClass?: string;
 }
 
 const Radio: React.FC<TextProps> = ({
@@ -18,18 +20,28 @@ const Radio: React.FC<TextProps> = ({
   radioList,
   required = false,
   className,
+  height = 9,
+  titleWidthClass,
 }) => {
   return (
     <div
-      className={`h-9 relative border border-gray-200 dark:border-gray-800 flex items-center w-1/2 ${
-        className && className
-      }`}
+      className={`border border-gray-200 dark:border-gray-800 flex items-center w-1/2 ${
+        className || ''
+      } ${height && `h-${height}`}`}
     >
-      <div className="bg-gray-200 dark:bg-gray-800 h-full leading-9 line-clamp-1 w-1/3 px-2">
+      <div
+        className={`bg-gray-200 flex items-center h-full dark:bg-gray-800 px-2 ${
+          titleWidthClass ? titleWidthClass : 'w-1/3'
+        }`}
+      >
         {labelText}
         {required && <RequiredMark required={required} />}
       </div>
-      <div className="px-2 w-2/3 flex gap-8 items-center">
+      <div
+        className={`px-2 flex gap-8 items-center h-full ${
+          titleWidthClass ? 'w-full' : 'w-2/3'
+        }`}
+      >
         {radioList.map(radio => {
           return (
             <label

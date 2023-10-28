@@ -13,6 +13,8 @@ interface TextProps {
   required?: boolean;
   disabled?: boolean;
   className?: string;
+  height?: number;
+  titleWidthClass?: string;
 }
 
 const Text: React.FC<TextProps> = ({
@@ -25,6 +27,8 @@ const Text: React.FC<TextProps> = ({
   required = false,
   disabled = false,
   className,
+  height = 9,
+  titleWidthClass,
 }) => {
   const [isDisabled, setIsDisabled] = useState(disabled);
 
@@ -40,21 +44,23 @@ const Text: React.FC<TextProps> = ({
 
   return (
     <div
-      className={`h-9 relative border border-gray-200 dark:border-gray-800 flex items-center w-1/2 ${
+      className={`border border-gray-200 dark:border-gray-800 flex items-center w-1/2 ${
         className || ''
-      }`}
+      } ${height && `h-${height}`}`}
     >
       <label
         htmlFor={label}
-        className="h-full leading-9 bg-gray-200 dark:bg-gray-800 px-2 w-1/3"
+        className={`h-full leading-9 bg-gray-200 dark:bg-gray-800 px-2 flex items-center ${
+          titleWidthClass ? titleWidthClass : 'w-1/3'
+        }`}
       >
         {labelText}
         {required && <RequiredMark required={required} />}
       </label>
       <input
-        className={`h-full leading-9 px-2 w-2/3 pr-8 ${
+        className={`h-full leading-9 px-2 pr-8 ${
           isDisabled ? 'bg-gray-50 text-gray-300' : ''
-        }`}
+        } ${titleWidthClass ? 'w-full' : 'w-2/3'}`}
         type={type || 'text'}
         id={label}
         value={value}
