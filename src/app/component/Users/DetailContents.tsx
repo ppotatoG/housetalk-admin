@@ -49,7 +49,7 @@ const DetailContents: React.FC<DetailContentsProps> = ({ user }) => {
         id: 'reset_password',
         title: '비밀번호 초기화',
         description: '비밀번호를 초기화 하시겠습니까?',
-        type: 'info',
+        type: 'default',
         callbackButton: {
           text: '초기화',
           type: 'TOAST_SUCCESS',

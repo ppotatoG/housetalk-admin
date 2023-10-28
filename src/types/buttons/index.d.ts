@@ -1,4 +1,4 @@
-type ButtonColors = 'default' | 'error' | 'warning';
+type ButtonColors = 'default' | 'error' | 'warning' | 'success';
 type ButtonSizes = 'small' | 'medium' | 'large';
 
 interface ButtonColorClasses {

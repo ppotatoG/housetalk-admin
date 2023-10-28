@@ -41,6 +41,16 @@ const COLOR_CLASSES: Record<
     darkText: 'text-yellow-600',
     darkBorder: 'dark:border-yellow-600',
   },
+  success: {
+    base: 'bg-green-500',
+    hover: 'hover:bg-green-600',
+    darkBase: 'dark:bg-green-600',
+    darkHover: 'dark:hover:bg-green-700',
+    text: 'text-white',
+    border: 'border-green-500',
+    darkText: 'text-green-600',
+    darkBorder: 'dark:border-green-600',
+  },
 };
 
 export { COLOR_CLASSES };

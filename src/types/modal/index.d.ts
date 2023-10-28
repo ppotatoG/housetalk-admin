@@ -10,16 +10,16 @@ interface ModalState {
   };
 }
 
-type ModalType = 'info' | 'error' | 'warning' | 'success';
+type ModalType = 'default' | 'error' | 'warning' | 'success';
 
 type SizeType = 'sm' | 'md' | 'lg';
 
 interface ModalConfig {
-  style: (size: SizeType) => string;
+  style: string;
   icon: React.ReactNode;
 }
 
-type modalCallbackType = 'TOAST_SUCCESS' | 'TOAST_ERROR';
+type modalCallbackType = 'TOAST_SUCCESS' | 'TOAST_ERROR' | 'back';
 
 interface ShowModalAction {
   type: string;

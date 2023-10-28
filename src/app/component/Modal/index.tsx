@@ -10,7 +10,7 @@ const Modal = ({
   id,
   title,
   description,
-  type = 'info',
+  type = 'default',
   callbackButton,
 }: ModalState) => {
   const dispatch = useDispatch();
@@ -43,15 +43,15 @@ const Modal = ({
           <div className="flex items-center justify-end gap-4 rounded-b-md">
             <Button
               variant="outlined"
-              color="default"
-              text="Close"
+              color={type}
+              text="닫기"
               className="!m-0"
               onClick={() => dispatch(closeModal(id))}
             />
             {callbackButton && (
               <Button
                 variant="filled"
-                color="default"
+                color={type}
                 text={callbackButton.text}
                 className="!m-0"
                 onClick={() => {
