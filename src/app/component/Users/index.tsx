@@ -94,7 +94,7 @@ const Users = () => {
             variant="filled"
             color="default"
             text="검색"
-            padding="px-6 py-3"
+            className="px-6 py-3"
             type="submit"
           />
         </form>
