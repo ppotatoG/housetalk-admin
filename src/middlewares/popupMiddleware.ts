@@ -11,6 +11,8 @@ const popupMiddleware: Middleware =
           type: 'success',
           position: 'top-right',
         });
+      } else if (action.payload.callbackType === 'back') {
+        window.history.back();
       }
     }
 

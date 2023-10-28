@@ -2,7 +2,9 @@
 
 import moment from 'moment/moment';
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 
+import Button from '@/component/common/Button';
 import PageHeader from '@/component/common/header/PageHeader';
 import { Radio, RangeDate, Text } from '@/component/common/input';
 import {
@@ -11,6 +13,7 @@ import {
   USAGE_STATUS,
   PAGE_HEADERS,
 } from '@/constants';
+import { showModal } from '@/slices/modalSlice';
 
 interface EditPageProps {
   type: string;
@@ -18,7 +21,9 @@ interface EditPageProps {
 }
 
 const EditPage: React.FC<EditPageProps> = ({ type, updateValue }) => {
-  const typeText = type === 'create' ? '등록' : '수정';
+  const dispatch = useDispatch();
+
+  const editType = type === 'create' ? '등록' : '수정';
 
   const [minValue, setMinValue] = useState<Date>(
     moment().subtract(6, 'months').toDate()
@@ -56,27 +61,48 @@ const EditPage: React.FC<EditPageProps> = ({ type, updateValue }) => {
   }, [updateValue]);
 
   const handelSubmit = () => {};
+
+  const handleCancel = () => {
+    dispatch(
+      showModal({
+        id: 'dont_save',
+        title: `${editType} 취소하기`,
+        description: `데이터를 저장하지 않고 취소하시겠습니까?`,
+        type: 'warning',
+        callbackButton: {
+          text: '뒤로가기',
+          type: 'back',
+        },
+      })
+    );
+  };
+
   return (
     <div>
       <PageHeader
-        title={`${PAGE_HEADERS.EXHIBITION_MAIN_BANNER} ${typeText}하기`}
+        title={`${PAGE_HEADERS.EXHIBITION_MAIN_BANNER} ${editType}하기`}
       />
       <p className="text-xs mt-2 font-light">
         *동일한 노출기간에 최대 {NUMBER_REGISTRATIONS}개 배너까지 등록
         가능합니다.
       </p>
 
-      <form onSubmit={handelSubmit} className="flex flex-col gap-4">
+      <form
+        className="flex flex-col mt-4 pb-4 border-t-2 border-gray-500"
+        onSubmit={handelSubmit}
+      >
         <RangeDate
           minValue={minValue}
           setMinValue={setMinValue}
           maxValue={maxValue}
           setMaxValue={setMaxValue}
           labelRangeDate="노출기간"
-          className="w-full"
+          className="!border-0 !border-b !border-gray-400 !dark:border-gray-600 w-full"
           useHour={true}
           useMinute={true}
           required={true}
+          height={16}
+          titleWidthClass="w-40"
         />
         <Radio
           labelText="노출상태"
@@ -84,7 +110,9 @@ const EditPage: React.FC<EditPageProps> = ({ type, updateValue }) => {
           setValue={setExposure}
           radioList={EXPOSURE_LIST.slice(1)}
           required={true}
-          className="w-full"
+          className="!border-0 !border-b !border-gray-400 !dark:border-gray-600 w-full"
+          height={16}
+          titleWidthClass="w-40"
         />
         <Radio
           labelText="사용여부"
@@ -92,7 +120,9 @@ const EditPage: React.FC<EditPageProps> = ({ type, updateValue }) => {
           setValue={setUsage}
           radioList={USAGE_STATUS.slice(1)}
           required={true}
-          className="w-full"
+          className="!border-0 !border-b !border-gray-400 !dark:border-gray-600 w-full"
+          height={16}
+          titleWidthClass="w-40"
         />
         <Text
           labelText="랜딩 URL"
@@ -101,7 +131,9 @@ const EditPage: React.FC<EditPageProps> = ({ type, updateValue }) => {
           setValue={setLandingUrl}
           placeholder="랜딩될 URL을 입력해주세요."
           required={true}
-          className="w-full"
+          className="!border-0 !border-b !border-gray-400 !dark:border-gray-600 w-full"
+          height={16}
+          titleWidthClass="w-40"
         />
         <Text
           labelText="이미지 URL"
@@ -110,7 +142,9 @@ const EditPage: React.FC<EditPageProps> = ({ type, updateValue }) => {
           setValue={setImageUrl}
           placeholder="이미지 URL을 입력해주세요."
           required={true}
-          className="w-full"
+          className="!border-0 !border-b !border-gray-400 !dark:border-gray-600 w-full"
+          height={16}
+          titleWidthClass="w-40"
         />
         <Text
           labelText="메인 문구"
@@ -119,7 +153,9 @@ const EditPage: React.FC<EditPageProps> = ({ type, updateValue }) => {
           setValue={setTitle}
           placeholder="띄어쓰기 포함 최대 N자 입력 가능"
           required={true}
-          className="w-full"
+          className="!border-0 !border-b !border-gray-400 !dark:border-gray-600 w-full"
+          height={16}
+          titleWidthClass="w-40"
         />
         <Text
           labelText="서브 문구"
@@ -128,8 +164,25 @@ const EditPage: React.FC<EditPageProps> = ({ type, updateValue }) => {
           setValue={setDescription}
           placeholder="띄어쓰기 포함 최대 N자 입력 가능"
           required={true}
-          className="w-full"
+          className="!border-0 !border-b !border-gray-400 !dark:border-gray-600 w-full"
+          height={16}
+          titleWidthClass="w-40"
         />
+
+        <div className="flex justify-center items-center gap-8 mt-8">
+          <Button
+            variant="outlined"
+            text="취소"
+            className="!ml-0 px-16"
+            onClick={handleCancel}
+          />
+          <Button
+            variant="filled"
+            type="submit"
+            text={editType}
+            className="!ml-0 px-16 "
+          />
+        </div>
       </form>
     </div>
   );
