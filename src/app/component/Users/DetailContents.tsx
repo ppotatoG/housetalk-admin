@@ -52,14 +52,8 @@ const DetailContents: React.FC<DetailContentsProps> = ({ user }) => {
         type: 'info',
         callbackButton: {
           text: '초기화',
-          onClick: () => {
-            toast(USERS_MESSAGE.DETAIL.PASSWORD_RESET_SUCCESS, {
-              hideProgressBar: true,
-              autoClose: 2000,
-              type: 'success',
-              position: 'top-right',
-            });
-          },
+          type: 'TOAST_SUCCESS',
+          message: '비밀번호가 초기화 되었습니다.',
         },
       })
     );

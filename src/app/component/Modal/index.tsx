@@ -54,7 +54,16 @@ const Modal = ({
                 color="default"
                 text={callbackButton.text}
                 className="!m-0"
-                onClick={callbackButton.onClick}
+                onClick={() => {
+                  dispatch({
+                    type: 'modalCallback',
+                    payload: {
+                      callbackType: callbackButton.type,
+                      message: callbackButton.message,
+                    },
+                  });
+                  dispatch(closeModal(id));
+                }}
               />
             )}
           </div>

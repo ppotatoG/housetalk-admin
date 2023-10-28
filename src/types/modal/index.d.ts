@@ -5,8 +5,8 @@ interface ModalState {
   type?: ModalType;
   callbackButton?: {
     text: string;
-    onClick: () => void;
-    color?: ButtonColors;
+    type: modalCallbackType;
+    message?: string;
   };
 }
 
@@ -17,4 +17,14 @@ type SizeType = 'sm' | 'md' | 'lg';
 interface ModalConfig {
   style: (size: SizeType) => string;
   icon: React.ReactNode;
+}
+
+type modalCallbackType = 'TOAST_SUCCESS' | 'TOAST_ERROR';
+
+interface ShowModalAction {
+  type: string;
+  payload: {
+    callbackType: modalCallbackType;
+    message: string;
+  };
 }

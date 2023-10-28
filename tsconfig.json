@@ -30,7 +30,8 @@
       "@/constants": ["src/constants/index.ts"],
       "@/utils/*": ["src/utils/*"],
       "@/slices/*": ["src/slices/*"],
-      "@/store": ["src/store"]
+      "@/store": ["src/store"],
+      "@/middlewares/*": ["src/middlewares/*"],
     }
   },
   "include": [
