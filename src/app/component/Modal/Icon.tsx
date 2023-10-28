@@ -6,29 +6,21 @@ import {
   AiOutlineWarning,
 } from 'react-icons/ai';
 
-const sizes: Record<SizeType, string> = {
-  sm: 'w-8 h-8 text-base',
-  md: 'w-12 h-12 text-lg',
-  lg: 'w-16 h-16 text-xl',
-};
-
 const MODAL_CONFIG: Record<ModalType, ModalConfig> = {
-  info: {
-    style: size => `text-blue-500 bg-blue-100 p-2 rounded-full ${sizes[size]}`,
+  default: {
+    style: 'text-blue-500 bg-blue-100 rounded-full w-12 h-12 text-2xl',
     icon: <AiOutlineInfoCircle />,
   },
   error: {
-    style: size => `text-red-500 bg-red-100 p-2 rounded-full ${sizes[size]}`,
+    style: 'text-red-500 bg-red-100 rounded-full w-12 h-12 text-2xl',
     icon: <AiOutlineCloseCircle />,
   },
   warning: {
-    style: size =>
-      `text-yellow-500 bg-yellow-100 p-2 rounded-full ${sizes[size]}`,
+    style: 'text-yellow-500 bg-yellow-100 rounded-full w-12 h-12 text-2xl',
     icon: <AiOutlineWarning />,
   },
   success: {
-    style: size =>
-      `text-green-500 bg-green-100 p-2 rounded-full ${sizes[size]}`,
+    style: 'text-green-500 bg-green-100 rounded-full w-12 h-12 text-2xl',
     icon: <AiOutlineCheckCircle />,
   },
 };
@@ -38,12 +30,12 @@ interface IconProps {
   size?: SizeType;
 }
 
-const Icon: React.FC<IconProps> = ({ type, size = 'md' }) => {
+const Icon: React.FC<IconProps> = ({ type }) => {
   const iconConfig = MODAL_CONFIG[type];
 
   return (
     <div
-      className={`flex justify-center items-center ${iconConfig.style(size)}`}
+      className={`flex justify-center items-center ${MODAL_CONFIG[type].style}`}
     >
       {iconConfig.icon}
     </div>
