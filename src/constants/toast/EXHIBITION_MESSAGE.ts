@@ -1,10 +1,10 @@
 export const EXHIBITION_MESSAGE = {
   SEARCH: {
-    SUCCESS: 'users search success',
-    ERROR: 'users search error',
+    SUCCESS: 'banner search success',
+    ERROR: 'banner search error',
   },
   DETAIL: {
-    PASSWORD_RESET_SUCCESS: 'users password reset success',
-    EDIT_SUCCESS: 'users detail edit success',
+    PASSWORD_RESET_SUCCESS: 'banner password reset success',
+    EDIT_SUCCESS: 'banner detail edit success',
   },
 };

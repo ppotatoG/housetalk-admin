@@ -10,7 +10,7 @@ import PageHeader from '@/component/common/header/PageHeader';
 import { RangeDate, Radio } from '@/component/common/input';
 import Table from '@/component/common/table';
 import {
-  USERS_MESSAGE,
+  EXHIBITION_MESSAGE,
   EXHIBITION_TABLE_HEADER,
   DUMMY_EXHIBITION,
   USAGE_STATUS,
@@ -48,7 +48,7 @@ const BannerPage = () => {
       })
     );
 
-    toast(USERS_MESSAGE.DETAIL.PASSWORD_RESET_SUCCESS, {
+    toast(EXHIBITION_MESSAGE.SEARCH.SUCCESS, {
       hideProgressBar: true,
       autoClose: 2000,
       type: 'success',
