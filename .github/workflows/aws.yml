@@ -35,6 +35,11 @@ jobs:
           TARGET: "/home/ec2-user/housetalk-admin"
           SSH_PRIVATE_KEY: ${{ secrets.STAGING_EC2_SSH_PRIVATE_KEY }}
 
+      - name: Create SSH Key File
+        run: |
+          echo "${{ secrets.STAGING_EC2_SSH_PRIVATE_KEY }}" > deploy_key
+          chmod 600 deploy_key
+
       - name: Start Next.js on EC2
         run: |
-          ssh -o StrictHostKeyChecking=no -i <(echo "${{ secrets.STAGING_EC2_SSH_PRIVATE_KEY }}") ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }} "cd /home/ubuntu/housetalk-admin && npm start"
+          ssh -o StrictHostKeyChecking=no -i deploy_key ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }} "cd /home/ec2-user/housetalk-admin && npm start"
