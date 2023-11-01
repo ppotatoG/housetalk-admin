@@ -1,4 +1,5 @@
 import { COLOR_CLASSES } from './buttons';
+import { COLORS } from './colors';
 import {
   CHART_COLORS,
   BAR_CHART_OPTIONS,
@@ -25,6 +26,7 @@ import {
   TOTAL_TICKS,
   TABLE_ROW_LIMIT,
 } from './layout';
+import { LOADING } from './loading';
 import { LOGIN } from './login';
 import { MENU, BUTTON_STYLES } from './menu';
 import { PAGE_HEADERS } from './pageHeaders';
@@ -32,6 +34,8 @@ import { USERS_MESSAGE, EXHIBITION_MESSAGE } from './toast';
 import { SEARCH_USERS_TYPE, DUMMY_USERS, USERS_TABLE_HEADER } from './users';
 
 export {
+  LOADING,
+  COLORS,
   COLOR_CLASSES,
   CHART_COLORS,
   BAR_CHART_OPTIONS,
