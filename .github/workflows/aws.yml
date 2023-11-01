@@ -1,9 +1,7 @@
-name: Deploy to EC2
+name: Manual Deploy to EC2
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
   deploy:
@@ -22,7 +20,7 @@ jobs:
       - name: Install SSH Key
         uses: shimataro/ssh-key-action@v2
         with:
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          key: ${{ secrets.STAGING_EC2_SSH_PRIVATE_KEY }}
           known_hosts: 'just-a-placeholder-so-we-dont-get-errors'
 
       - name: Deploy to EC2
@@ -31,6 +29,10 @@ jobs:
           REMOTE_HOST: ${{ secrets.EC2_HOST }}
           REMOTE_USER: ${{ secrets.EC2_USERNAME }}
           REMOTE_PORT: ${{ secrets.EC2_PORT }}
-          SOURCE: "./"
+          SOURCE: ".next/ public/"
           TARGET: "/home/ubuntu/housetalk-admin"
-          SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
+          SSH_PRIVATE_KEY: ${{ secrets.STAGING_EC2_SSH_PRIVATE_KEY }}
+
+      - name: Start Next.js on EC2
+        run: |
+          ssh -o StrictHostKeyChecking=no -i <(echo "${{ secrets.STAGING_EC2_SSH_PRIVATE_KEY }}") ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }} "cd /home/ubuntu/housetalk-admin && npm start"
