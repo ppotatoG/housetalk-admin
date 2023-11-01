@@ -32,7 +32,7 @@ jobs:
           REMOTE_USER: ${{ secrets.EC2_USERNAME }}
           REMOTE_PORT: ${{ secrets.EC2_PORT }}
           SOURCE: ".next/ public/"
-          TARGET: "/home/ubuntu/housetalk-admin"
+          TARGET: "/home/ec2-user/housetalk-admin"
           SSH_PRIVATE_KEY: ${{ secrets.STAGING_EC2_SSH_PRIVATE_KEY }}
 
       - name: Start Next.js on EC2
