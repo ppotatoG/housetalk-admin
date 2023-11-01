@@ -1,7 +1,9 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import { FiRefreshCcw } from 'react-icons/fi';
 
+import { dummyApi } from '@/api/dummy';
 import Board from '@/component/Dashboard/Board';
 import GenderStatistics from '@/component/Dashboard/GenderStatistics';
 import UserSubscriptionTrend from '@/component/Dashboard/UserSubscriptionTrend';
@@ -14,45 +16,68 @@ import {
 } from '@/constants';
 
 const Dashboard = () => {
-  const now = new Date();
-
-  const formatOptions: Intl.DateTimeFormatOptions = {
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-    weekday: 'short',
+  const getFormattedTime = () => {
+    const now = new Date();
+    const formatOptions: Intl.DateTimeFormatOptions = {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      weekday: 'short',
+    };
+    const formattedDate = now.toLocaleDateString('ko-KR', formatOptions);
+    return `${formattedDate.replace(/\.\s/g, '.')} ${now
+      .getHours()
+      .toString()
+      .padStart(2, '0')}시 ${now.getMinutes().toString().padStart(2, '0')}분`;
   };
 
-  const formattedDate = new Date().toLocaleDateString('ko-KR', formatOptions);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [data, setData] = useState<null | any>(null);
 
-  const hours = now.getHours().toString().padStart(2, '0');
-  const minutes = now.getMinutes().toString().padStart(2, '0');
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await dummyApi({
+        signUpContents: DUMMY_SIGNUP_CONTENTS,
+        genderCounts: DUMMY_GENDER_COUNTS,
+        freeBoardPosts: DUMMY_FREE_BOARD_POSTS,
+        recommendItemPosts: DUMMY_RECOMMEND_ITEM_POSTS,
+        houseReviewPosts: DUMMY_HOUSE_REVIEW_POSTS,
+      });
+      setData(response);
+    };
 
-  const formattedTime = `${formattedDate.replace(
-    /\. /g,
-    '.'
-  )} ${hours}시 ${minutes}분`;
+    fetchData();
+  }, []);
+
+  if (!data) {
+    return null;
+  }
+
+  const {
+    signUpContents,
+    genderCounts,
+    freeBoardPosts,
+    recommendItemPosts,
+    houseReviewPosts,
+  } = data;
 
   return (
     <>
       <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400">
-        <p>{formattedTime}</p>
+        <p>{getFormattedTime()}</p>
         <button aria-label="refresh">
           <FiRefreshCcw />
         </button>
       </div>
       <div className="flex gap-2 mt-6 h-full">
-        <UserSubscriptionTrend
-          data={DUMMY_SIGNUP_CONTENTS}
-          today="2023.09.19"
-        />
-        <GenderStatistics data={DUMMY_GENDER_COUNTS} />
+        <UserSubscriptionTrend data={signUpContents} today="2023.09.19" />
+        <GenderStatistics data={genderCounts} />
       </div>
       <Board
-        freeData={DUMMY_FREE_BOARD_POSTS}
-        recommendData={DUMMY_RECOMMEND_ITEM_POSTS}
-        reviewData={DUMMY_HOUSE_REVIEW_POSTS}
-        now={now}
+        freeData={freeBoardPosts}
+        recommendData={recommendItemPosts}
+        reviewData={houseReviewPosts}
+        now={new Date()}
       />
     </>
   );
