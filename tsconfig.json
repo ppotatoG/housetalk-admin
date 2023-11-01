@@ -32,6 +32,8 @@
       "@/slices/*": ["src/slices/*"],
       "@/store": ["src/store"],
       "@/middlewares/*": ["src/middlewares/*"],
+      "@/interceptors": ["src/api/interceptors"],
+      "@/api/*": ["src/api/*"]
     }
   },
   "include": [
