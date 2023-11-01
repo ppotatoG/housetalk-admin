@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { COLORS } from '@/constants';
+
 interface TextProps {
   value: string;
   labelText: string;
@@ -45,7 +47,7 @@ const ReadOnlyRadio: React.FC<TextProps> = ({
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-2 w-2"
                   viewBox="0 0 16 16"
-                  fill="#1d1b4b"
+                  fill={COLORS['indigo-950']}
                 >
                   <circle cx="8" cy="8" r="6"></circle>
                 </svg>
