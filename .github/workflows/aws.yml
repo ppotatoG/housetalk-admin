@@ -37,10 +37,8 @@ jobs:
 
       - name: Kill Previous Instance
         run: |
-          ssh -o "BatchMode yes" -i deploy_key ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }} "pkill -f 'node .next'"
+          ssh -o "BatchMode yes" -i ${{ github.workspace }}/.ssh/id_rsa ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }} "pkill -f 'node .next'"
 
       - name: Start Next.js on EC2
         run: |
-          echo "${{ secrets.STAGING_EC2_SSH_PRIVATE_KEY }}" > deploy_key
-          chmod 600 deploy_key
-          ssh -o "BatchMode yes" -i deploy_key ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }} "cd /home/ec2-user/housetalk-admin && nohup npm start > app.log 2>&1 &"
+          ssh -o "BatchMode yes" -i ${{ github.workspace }}/.ssh/id_rsa ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }} "cd /home/ec2-user/housetalk-admin && nohup npm start > app.log 2>&1 &"
