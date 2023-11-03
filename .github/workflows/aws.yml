@@ -23,6 +23,7 @@ jobs:
         uses: shimataro/ssh-key-action@v2
         with:
           key: ${{ secrets.STAGING_EC2_SSH_PRIVATE_KEY }}
+          known_hosts: ${{ secrets.KNOWN_HOSTS }}
 
       - name: Deploy to EC2
         uses: easingthemes/ssh-deploy@main
@@ -34,6 +35,12 @@ jobs:
           TARGET: "/home/ec2-user/housetalk-admin"
           SSH_PRIVATE_KEY: ${{ secrets.STAGING_EC2_SSH_PRIVATE_KEY }}
 
+      - name: Kill Previous Instance
+        run: |
+          ssh -o "BatchMode yes" -i deploy_key ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }} "pkill -f 'node .next'"
+
       - name: Start Next.js on EC2
         run: |
-          ssh -o StrictHostKeyChecking=no -i <(echo "${{ secrets.STAGING_EC2_SSH_PRIVATE_KEY }}") ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }} "cd /home/ec2-user/housetalk-admin && nohup npm start &"
+          echo "${{ secrets.STAGING_EC2_SSH_PRIVATE_KEY }}" > deploy_key
+          chmod 600 deploy_key
+          ssh -o "BatchMode yes" -i deploy_key ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }} "cd /home/ec2-user/housetalk-admin && nohup npm start > app.log 2>&1 &"
