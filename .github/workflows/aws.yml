@@ -37,7 +37,7 @@ jobs:
 
       - name: Kill Previous Node Process
         run: |
-          ssh -o "BatchMode yes" -i $HOME/.ssh/id_rsa ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }} "pkill -f 'node .next'"
+          ssh -v -o "BatchMode yes" -i $HOME/.ssh/id_rsa ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }} "pkill -f 'node .next'"
 
       - name: Start Next.js on EC2
         run: |
