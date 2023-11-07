@@ -27,14 +27,11 @@ jobs:
           known_hosts: "just-a-placeholder-so-we-dont-get-errors"
 
       - name: Set SSH Key Permissions
-        run: |
-          chmod 600 ${{ github.workspace }}/.ssh/id_rsa
+        run: chmod 600 ${{ github.workspace }}/.ssh/id_rsa
+
+      - name: Check SSH Key File
+        run: ls -la ${{ github.workspace }}/.ssh/ || true
 
       - name: Start Next.js on EC2
         run: |
           ssh -v -o "BatchMode yes" -i ${{ github.workspace }}/.ssh/id_rsa ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }} "cd /home/ec2-user/housetalk-admin && nohup npm start > app.log 2>&1 &"
-
-      # Optional: Add a step to check the app.log if you want to ensure that the server started correctly.
-      - name: Check app log
-        run: |
-          ssh -o "BatchMode yes" -i ${{ github.workspace }}/.ssh/id_rsa ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }} "cat /home/ec2-user/housetalk-admin/app.log"
