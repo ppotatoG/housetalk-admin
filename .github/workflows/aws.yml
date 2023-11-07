@@ -38,4 +38,3 @@ jobs:
       - name: Start Next.js on EC2
         run: |
           ssh -o "BatchMode yes" -i ${{ github.workspace }}/.ssh/id_rsa ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }} "cd /home/ec2-user/housetalk-admin && nohup npm start > app.log 2>&1 &"
-
