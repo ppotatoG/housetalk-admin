@@ -27,10 +27,10 @@ jobs:
           known_hosts: "just-a-placeholder-so-we-dont-get-errors"
 
       - name: Set SSH Key Permissions
-        run: chmod 600 ${{ github.workspace }}/.ssh/id_rsa
+        run: chmod 600 /home/runner/.ssh/id_rsa
 
       - name: Check SSH Key File
-        run: ls -la ${{ github.workspace }}/.ssh/ || true
+        run: ls -la /home/runner/.ssh/ || true
 
       - name: Start Next.js on EC2
         run: |
