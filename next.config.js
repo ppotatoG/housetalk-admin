@@ -1,5 +1,5 @@
 const nextConfig = {
-  assetPrefix: '/housetalk-admin/',
+  assetPrefix: '',
   output: 'export',
 };
 module.exports = nextConfig;
