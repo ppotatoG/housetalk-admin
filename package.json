@@ -23,7 +23,7 @@
     "flowbite-react": "^0.6.0",
     "framer-motion": "^10.16.4",
     "moment": "^2.29.4",
-    "next": "13.4.19",
+    "next": "13.4.20-canary.13",
     "react": "18.2.0",
     "react-calendar": "^4.6.0",
     "react-chartjs-2": "^5.2.0",
