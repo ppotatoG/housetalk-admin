@@ -14,3 +14,5 @@ const Home = ({ params }: { params: PageParams }) => {
 };
 
 export default Home;
+
+export const dynamicParams = false;
