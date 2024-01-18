@@ -2,10 +2,10 @@ import DetailGuard from '@/component/Exhibition/DetailGuard';
 import { DefaultLayout } from '@/pageLayout';
 
 type PageParams = {
-  slug: string;
+  params: { id: string };
 };
 
-const Home = ({ params }: { params: PageParams }) => {
+const Home = ({ params }: PageParams) => {
   return (
     <DefaultLayout>
       <DetailGuard params={params} />
